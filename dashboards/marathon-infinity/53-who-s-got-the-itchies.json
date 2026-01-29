@@ -1,0 +1,4 @@
+{
+  "$schema": "https://grafana.com/json-schema/dashboard/v2",
+  "title": "Who's Got The Itchies"
+}
