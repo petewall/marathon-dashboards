@@ -1,0 +1,21 @@
+games:
+  - name: Marathon 1
+    releaseDate: 1994
+    logo: http://...
+    weapons:
+      - name: fist
+        firedMetric: null
+        hitMetric: null
+      - name: pistol
+        firedMetric: pistol bullets fired
+        hitMetric: pistol bullets hit
+        image: http://...
+    monsters:
+      - name: minor fighter
+        image: http://...
+        killsMetric: minor fighter kills
+        punchKillsMetric: minor fighter punch kills
+        sparedMetric: minor fighters spared
+    levels:
+      - name: Arrival
+        mapUrl: http://...
