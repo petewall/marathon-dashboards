@@ -1,0 +1,127 @@
+name: Marathon 1
+releaseDate: 1994
+logo: http://...
+weapons:
+  - name: fist
+    firedMetric: null
+    hitMetric: null
+  - name: pistol
+    firedMetric: pistol bullets fired
+    hitMetric: pistol bullets hit
+    image: http://...
+  - name: assault rifle
+    firedMetric: rifle bullets fired
+    hitMetric: rifle bullets hit
+    image: http://...
+  - name: grenade launcher
+    firedMetric: grenades fired
+    hitMetric: grenades hit
+    image: http://...
+monsters:
+  - name: minor fighter
+    image: http://...
+    killsMetric: minor fighter kills
+    punchKillsMetric: minor fighter punch kills
+    sparedMetric: minor fighters spared
+  - name: minor projectile fighter
+    image: http://...
+    killsMetric: minor projectile fighter kills
+    punchKillsMetric: minor projectile fighter punch kills
+    sparedMetric: minor projectile fighters spared
+  - name: minor compiler
+    image: http://...
+    killsMetric: minor compiler kills
+    punchKillsMetric: minor compiler punch kills
+  - name: major fighter
+    image: http://...
+    killsMetric: major fighter kills
+  - name: major projectile fighter
+    image: http://...
+    killsMetric: major projectile fighter kills
+  - name: minor trooper
+    image: http://...
+    killsMetric: minor trooper kills
+  - name: minor hulk
+    image: http://...
+    killsMetric: minor hulk kills
+  - name: crew bob
+    image: http://...
+    killsMetric: crew bob kills
+  - name: madd
+    image: http://...
+    sparedMetric: madds spared
+levels:
+  - name: Arrival
+    mapUrl: https://www.lhowon.org/levels/marathon/standard/0.png
+  - name: Bigger Guns Nearby
+    mapUrl: https://www.lhowon.org/levels/marathon/standard/1.png
+  - name: Never Burn Money
+    mapUrl: https://www.lhowon.org/levels/marathon/standard/2.png
+  - name: Defend THIS!
+    mapUrl: https://www.lhowon.org/levels/marathon/standard/3.png
+  - name: Couch Fishing
+    mapUrl: https://www.lhowon.org/levels/marathon/standard/4.png
+  - name: The Rose
+    mapUrl: https://www.lhowon.org/levels/marathon/standard/5.png
+  - name: Smells Like Napalm, Tastes Like Chicken!
+    mapUrl: https://www.lhowon.org/levels/marathon/standard/6.png
+  - name: Cool Fusion
+    mapUrl: https://www.lhowon.org/levels/marathon/standard/7.png
+  - name: G4 Sunbathing
+    mapUrl: https://www.lhowon.org/levels/marathon/standard/8.png
+  - name: Blaspheme Quarantine
+    mapUrl: https://www.lhowon.org/levels/marathon/standard/9.png
+  - name: Bob-B-Q
+    mapUrl: https://www.lhowon.org/levels/marathon/standard/10.png
+  - name: Shake Before Using...
+    mapUrl: https://www.lhowon.org/levels/marathon/standard/11.png
+  - name: Fire! Fire! Fire! Fire! Fire!
+    mapUrl: https://www.lhowon.org/levels/marathon/standard/12.png
+  - name: Colony Ship For Sale, Cheap
+    mapUrl: https://www.lhowon.org/levels/marathon/standard/13.png
+  - name: Habe Quiddam
+    mapUrl: https://www.lhowon.org/levels/marathon/standard/14.png
+  - name: Neither High nor Low
+    mapUrl: https://www.lhowon.org/levels/marathon/standard/15.png
+  - name: Pfhor Your Eyes Only...
+    mapUrl: https://www.lhowon.org/levels/marathon/standard/16.png
+  - name: No Artificial Colors
+    mapUrl: https://www.lhowon.org/levels/marathon/standard/17.png
+  - name: Unpfhorgiven
+    mapUrl: https://www.lhowon.org/levels/marathon/standard/18.png
+  - name: Two Times Two Equals...
+    mapUrl: https://www.lhowon.org/levels/marathon/standard/19.png
+  - name: Beware of Low-Flying Defense Drones...
+    mapUrl: https://www.lhowon.org/levels/marathon/standard/20.png
+  - name: Eupfhoria
+    mapUrl: https://www.lhowon.org/levels/marathon/standard/21.png
+  - name: Pfhoraphobia
+    mapUrl: https://www.lhowon.org/levels/marathon/standard/22.png
+  - name: Ain't Got Time Pfhor This...
+    mapUrl: https://www.lhowon.org/levels/marathon/standard/23.png
+  - name: Welcome to the Revolution...
+    mapUrl: https://www.lhowon.org/levels/marathon/standard/24.png
+  - name: Try again
+    mapUrl: https://www.lhowon.org/levels/marathon/standard/25.png
+  - name: Ingue Ferroque
+    mapUrl: https://www.lhowon.org/levels/marathon/standard/26.png
+  - name: Mars Needs Women
+    mapUrl: https://www.lhowon.org/levels/marathon/standard/27.png
+  - name: Carnage Palace Deeee-Luxe
+    mapUrl: https://www.lhowon.org/levels/marathon/standard/28.png
+  - name: 5-D space
+    mapUrl: https://www.lhowon.org/levels/marathon/standard/29.png
+  - name: Arena
+    mapUrl: https://www.lhowon.org/levels/marathon/standard/30.png
+  - name: E equals MC WHAT!!
+    mapUrl: https://www.lhowon.org/levels/marathon/standard/31.png
+  - name: Showered With Grenades
+    mapUrl: https://www.lhowon.org/levels/marathon/standard/32.png
+  - name: Spiral Insanity
+    mapUrl: https://www.lhowon.org/levels/marathon/standard/33.png
+  - name: Waldo World Arena
+    mapUrl: https://www.lhowon.org/levels/marathon/standard/34.png
+  - name: What Goes Up, Must Come Down
+    mapUrl: https://www.lhowon.org/levels/marathon/standard/35.png
+  - name: You don't need to see my I.D.
+    mapUrl: https://www.lhowon.org/levels/marathon/standard/36.png
