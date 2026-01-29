@@ -15,6 +15,29 @@
 help: ## Display this help.
 	@awk 'BEGIN {FS = ":.*##"; printf "\nUsage:\n  make \033[36m<target>\033[0m\n"} /^[a-zA-Z_0-9-]+:.*?##/ { printf "  \033[36m%-15s\033[0m %s\n", $$1, $$2 } /^##@/ { printf "\n\033[1m%s\033[0m\n", substr($$0, 5) } ' $(MAKEFILE_LIST)
 
+##@ Dashboards
+
+.PHONY: clean
+clean: ## Delete generated dashboards.
+	rm -rf dashboards/*
+
+SUMMARY_DASHBOARD := dashboards/summary.json
+GAMES := $(wildcard data/*.yaml)
+GAME_DASHBOARDS := $(GAMES:data/%.yaml=dashboards/%.json)
+
+dashboards/summary.json: templates/summary-dashboard-template.json ## Builds the summary dashboard.
+	@mkdir -p $(dir $@)
+	cp $< $@
+
+dashboards/%.json: data/%.yaml templates/game-dashboard-template.json ## Builds the game dashboard.
+	@mkdir -p $(dir $@)
+	@GAME_TITLE="$$(yq -r '.name' $<)" \
+		envsubst '$${GAME_TITLE}' < templates/game-dashboard-template.json > $@
+
+.PHONY: dashboards
+dashboards: $(SUMMARY_DASHBOARD) $(GAME_DASHBOARDS) ## Builds all dashboards.
+
+##@ Testing
 
 .PHONY: lint
 lint: lint-yaml lint-markdown ## Runs all linters.
