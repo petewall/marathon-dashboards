@@ -21,27 +21,27 @@ help: ## Display this help.
 clean: ## Delete generated dashboards.
 	rm -rf dashboards/*
 
-SUMMARY_TEMPLATE := templates/summary-dashboard-template.json
-GAME_TEMPLATE := templates/game-dashboard-template.json
-LEVEL_TEMPLATE := templates/level-dashboard-template.json
+SUMMARY_TEMPLATE := templates/summary-dashboard-template.yaml
+GAME_TEMPLATE := templates/game-dashboard-template.yaml
+LEVEL_TEMPLATE := templates/level-dashboard-template.yaml
 
-SUMMARY_DASHBOARD := dashboards/summary.json
+SUMMARY_DASHBOARD := dashboards/summary.yaml
 GAME_DATA_FILES := $(wildcard data/*.yaml)
-GAME_DASHBOARDS := $(GAME_DATA_FILES:data/%.yaml=dashboards/%.json)
+GAME_DASHBOARDS := $(GAME_DATA_FILES:data/%.yaml=dashboards/%.yaml)
 LEVEL_DASHBOARDS := $(strip $(foreach game,$(GAME_DATA_FILES), \
 	$(addprefix dashboards/$(basename $(notdir $(game)))/, \
 		$(shell yq -r '.levels | to_entries[] | "\(.key + 1)-\(.value.name)"' $(game) \
 			| tr '[:upper:]' '[:lower:]' \
 			| sed -E -e 's/[^a-z0-9-]+/-/g' -e 's/^([0-9]+-)-+/\1/' -e 's/-+$$//' \
-			| sed 's/$$/.json/') \
+			| sed 's/$$/.yaml/') \
 	) \
 ))
 
-dashboards/summary.json: $(SUMMARY_TEMPLATE) ## Builds the summary dashboard.
+dashboards/summary.yaml: $(SUMMARY_TEMPLATE) ## Builds the summary dashboard.
 	@mkdir -p $(dir $@)
 	cp $< $@
 
-dashboards/%.json: data/%.yaml $(GAME_TEMPLATE) ## Builds the game dashboard.
+dashboards/%.yaml: data/%.yaml $(GAME_TEMPLATE) ## Builds the game dashboard.
 	@mkdir -p $(dir $@)
 	@GAME_TITLE="$$(yq -r '.name' $<)" \
 		envsubst '$${GAME_TITLE}' < $(GAME_TEMPLATE) > $@
@@ -49,11 +49,15 @@ dashboards/%.json: data/%.yaml $(GAME_TEMPLATE) ## Builds the game dashboard.
 $(LEVEL_DASHBOARDS): $(LEVEL_TEMPLATE) $(GAME_DATA_FILES)
 	@mkdir -p $(dir $@)
 	@game=$$(basename $$(dirname $@)); \
-	level_file=$$(basename $@ .json); \
+	level_file=$$(basename $@ .yaml); \
 	level_idx=$${level_file%%-*}; \
 	zero_idx=$$((level_idx - 1)); \
-	LEVEL_TITLE="$$(yq -r ".levels[$$zero_idx].name" data/$$game.yaml)" \
-		envsubst '$${LEVEL_TITLE}' < $(LEVEL_TEMPLATE) > $@
+	GAME_TITLE="$$(yq -r '.name' data/$$game.yaml)"; \
+	LEVEL_TITLE="$$(yq -r ".levels[$$zero_idx].name" data/$$game.yaml)"; \
+	LEVEL_MAP_URL="$$(yq -r ".levels[$$zero_idx].mapUrl" data/$$game.yaml)"; \
+	GAME_SLUG="$$game"; \
+	LEVEL_NUMBER="$$level_idx"; \
+		envsubst '$${GAME_TITLE}$${LEVEL_TITLE}$${LEVEL_MAP_URL}$${GAME_SLUG}$${LEVEL_NUMBER}' < $(LEVEL_TEMPLATE) > $@
 
 .PHONY: dashboards
 dashboards: $(SUMMARY_DASHBOARD) $(GAME_DASHBOARDS) $(LEVEL_DASHBOARDS) ## Builds all dashboards.
