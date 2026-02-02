@@ -38,6 +38,7 @@ spec:
                                     group: grafana-mongodb-datasource
                                     kind: DataQuery
                                     spec:
+                                        expand: true
                                         parsedQuery: marathon-game-data.marathon-game-data.aggregate([{"$project":{"_id":0,"date":"$date","durationSeconds":{"$subtract":[{"$toInt":{"$ifNull":["$end tick",0]}},{"$toInt":{"$ifNull":["$start tick",0]}}]}}},{"$sort":{"date":1}}])
                                         query: |-
                                             marathon-game-data.marathon-game-data.aggregate([
@@ -121,19 +122,40 @@ spec:
                                 sort: none
                     version: 12.4.0-21496434218
     layout:
-        kind: GridLayout
+        kind: RowsLayout
         spec:
-            items:
-                - kind: GridLayoutItem
+            rows:
+                - kind: RowsLayoutRow
                   spec:
-                    element:
-                        kind: ElementReference
-                        name: panel-1
-                    height: 8
-                    width: 24
-                    x: 0
-                    "y": 0
-    links: []
+                    collapse: false
+                    layout:
+                        kind: GridLayout
+                        spec:
+                            items:
+                                - kind: GridLayoutItem
+                                  spec:
+                                    element:
+                                        kind: ElementReference
+                                        name: panel-1
+                                    height: 8
+                                    width: 24
+                                    x: 0
+                                    "y": 0
+                    repeat:
+                        mode: variable
+                        value: games
+                    title: $games
+    links:
+        - asDropdown: false
+          icon: external link
+          includeVars: false
+          keepTime: false
+          tags: []
+          targetBlank: true
+          title: Source (GitHub)
+          tooltip: View source file in repository
+          type: link
+          url: https://github.com/petewall/marathon-dashboards/blob/main/dashboards/summary.yaml
     liveNow: false
     preload: false
     tags: []
@@ -156,4 +178,18 @@ spec:
         timezone: browser
         to: "2026-01-28T19:56:11.000Z"
     title: Summary
-    variables: []
+    variables:
+        - kind: CustomVariable
+          spec:
+            allowCustomValue: false
+            current:
+                text: marathon-1
+                value: marathon-1
+            hide: dontHide
+            includeAll: false
+            multi: false
+            name: games
+            options: []
+            query: marathon-1,marathon-2,marathon-infinity
+            skipUrlSync: false
+            valuesFormat: csv
