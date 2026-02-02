@@ -128,6 +128,7 @@ spec:
                 - kind: RowsLayoutRow
                   spec:
                     collapse: false
+                    hideHeader: false
                     layout:
                         kind: GridLayout
                         spec:
@@ -137,7 +138,7 @@ spec:
                                     element:
                                         kind: ElementReference
                                         name: panel-1
-                                    height: 8
+                                    height: 5
                                     width: 24
                                     x: 0
                                     "y": 0
@@ -183,11 +184,17 @@ spec:
           spec:
             allowCustomValue: false
             current:
-                text: marathon-1
-                value: marathon-1
-            hide: dontHide
+                text:
+                    - marathon-1
+                    - marathon-2
+                    - marathon-infinity
+                value:
+                    - marathon-1
+                    - marathon-2
+                    - marathon-infinity
+            hide: hideVariable
             includeAll: false
-            multi: false
+            multi: true
             name: games
             options: []
             query: marathon-1,marathon-2,marathon-infinity
