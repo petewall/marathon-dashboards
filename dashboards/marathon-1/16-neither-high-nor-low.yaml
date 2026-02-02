@@ -55,7 +55,7 @@ spec:
                 showLineNumbers: false
                 showMiniMap: false
               content: >-
-                <img src="" />
+                <img src="https://www.lhowon.org/levels/marathon/standard/15.png" />
               mode: html
           version: 12.4.0-21428475782
     panel-2:
@@ -92,7 +92,7 @@ spec:
                 language: plaintext
                 showLineNumbers: false
                 showMiniMap: false
-              content: "# "
+              content: "# 16"
               mode: markdown
           version: 12.4.0-21428475782
     panel-3:
@@ -129,7 +129,7 @@ spec:
                 language: plaintext
                 showLineNumbers: false
                 showMiniMap: false
-              content: "# "
+              content: "# Neither High nor Low"
               mode: markdown
           version: 12.4.0-21428475782
     panel-5:
@@ -151,7 +151,7 @@ spec:
                       expand: true
                       parsedQuery: >-
                         marathon-game-data.marathon-game-data.aggregate([{"$match":{"scenario
-                        name":"","level":""}},{"$facet":{"stats":[{"$group":{"_id":null,"fired":{"$sum":{"$toInt":{"$ifNull":["$pistol
+                        name":"Marathon 1","level":"Neither High nor Low"}},{"$facet":{"stats":[{"$group":{"_id":null,"fired":{"$sum":{"$toInt":{"$ifNull":["$pistol
                         bullets
                         fired",0]}}},"hit":{"$sum":{"$toInt":{"$ifNull":["$pistol
                         bullets
@@ -330,7 +330,7 @@ spec:
                       expand: true
                       parsedQuery: >-
                         marathon-game-data.marathon-game-data.aggregate([{"$match":{"scenario
-                        name":"","level":""}},{"$facet":{"stats":[{"$group":{"_id":null,"fired":{"$sum":{"$toInt":{"$ifNull":["$rifle
+                        name":"Marathon 1","level":"Neither High nor Low"}},{"$facet":{"stats":[{"$group":{"_id":null,"fired":{"$sum":{"$toInt":{"$ifNull":["$rifle
                         bullets
                         fired",0]}}},"hit":{"$sum":{"$toInt":{"$ifNull":["$rifle
                         bullets
@@ -636,7 +636,7 @@ spec:
       includeVars: false
       keepTime: false
       tags:
-        - -level
+        - marathon-1-level
       targetBlank: false
       title: Levels
       tooltip: ''
@@ -645,7 +645,7 @@ spec:
   liveNow: false
   preload: false
   tags:
-    - -level
+    - marathon-1-level
   timeSettings:
     autoRefresh: ''
     autoRefreshIntervals:
@@ -664,26 +664,26 @@ spec:
     hideTimepicker: false
     timezone: browser
     to: now
-  title: " - "
+  title: "16 - Neither High nor Low"
   variables:
     - kind: ConstantVariable
       spec:
         current:
-          text: ""
-          value: ""
+          text: "Marathon 1"
+          value: "Marathon 1"
         hide: hideVariable
         label: Game
         name: game
-        query: ""
+        query: "Marathon 1"
         skipUrlSync: true
     - kind: ConstantVariable
       spec:
         current:
-          text: ""
-          value: ""
+          text: "Neither High nor Low"
+          value: "Neither High nor Low"
         description: ''
         hide: hideVariable
         label: Level
         name: level
-        query: ""
+        query: "Neither High nor Low"
         skipUrlSync: true

@@ -55,7 +55,7 @@ spec:
                 showLineNumbers: false
                 showMiniMap: false
               content: >-
-                <img src="" />
+                <img src="https://www.lhowon.org/levels/marathon-infinity/standard/4.png" />
               mode: html
           version: 12.4.0-21428475782
     panel-2:
@@ -92,7 +92,7 @@ spec:
                 language: plaintext
                 showLineNumbers: false
                 showMiniMap: false
-              content: "# "
+              content: "# 5"
               mode: markdown
           version: 12.4.0-21428475782
     panel-3:
@@ -129,7 +129,7 @@ spec:
                 language: plaintext
                 showLineNumbers: false
                 showMiniMap: false
-              content: "# "
+              content: "# Electric Sheep One"
               mode: markdown
           version: 12.4.0-21428475782
     panel-5:
@@ -151,7 +151,7 @@ spec:
                       expand: true
                       parsedQuery: >-
                         marathon-game-data.marathon-game-data.aggregate([{"$match":{"scenario
-                        name":"","level":""}},{"$facet":{"stats":[{"$group":{"_id":null,"fired":{"$sum":{"$toInt":{"$ifNull":["$pistol
+                        name":"Marathon Infinity","level":"Electric Sheep One"}},{"$facet":{"stats":[{"$group":{"_id":null,"fired":{"$sum":{"$toInt":{"$ifNull":["$pistol
                         bullets
                         fired",0]}}},"hit":{"$sum":{"$toInt":{"$ifNull":["$pistol
                         bullets
@@ -330,7 +330,7 @@ spec:
                       expand: true
                       parsedQuery: >-
                         marathon-game-data.marathon-game-data.aggregate([{"$match":{"scenario
-                        name":"","level":""}},{"$facet":{"stats":[{"$group":{"_id":null,"fired":{"$sum":{"$toInt":{"$ifNull":["$rifle
+                        name":"Marathon Infinity","level":"Electric Sheep One"}},{"$facet":{"stats":[{"$group":{"_id":null,"fired":{"$sum":{"$toInt":{"$ifNull":["$rifle
                         bullets
                         fired",0]}}},"hit":{"$sum":{"$toInt":{"$ifNull":["$rifle
                         bullets
@@ -636,7 +636,7 @@ spec:
       includeVars: false
       keepTime: false
       tags:
-        - -level
+        - marathon-infinity-level
       targetBlank: false
       title: Levels
       tooltip: ''
@@ -645,7 +645,7 @@ spec:
   liveNow: false
   preload: false
   tags:
-    - -level
+    - marathon-infinity-level
   timeSettings:
     autoRefresh: ''
     autoRefreshIntervals:
@@ -664,26 +664,26 @@ spec:
     hideTimepicker: false
     timezone: browser
     to: now
-  title: " - "
+  title: "5 - Electric Sheep One"
   variables:
     - kind: ConstantVariable
       spec:
         current:
-          text: ""
-          value: ""
+          text: "Marathon Infinity"
+          value: "Marathon Infinity"
         hide: hideVariable
         label: Game
         name: game
-        query: ""
+        query: "Marathon Infinity"
         skipUrlSync: true
     - kind: ConstantVariable
       spec:
         current:
-          text: ""
-          value: ""
+          text: "Electric Sheep One"
+          value: "Electric Sheep One"
         description: ''
         hide: hideVariable
         label: Level
         name: level
-        query: ""
+        query: "Electric Sheep One"
         skipUrlSync: true

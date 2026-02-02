@@ -48,16 +48,7 @@ dashboards/%.yaml: data/%.yaml $(GAME_TEMPLATE) ## Builds the game dashboard.
 
 $(LEVEL_DASHBOARDS): $(LEVEL_TEMPLATE) $(GAME_DATA_FILES)
 	@mkdir -p $(dir $@)
-	@game=$$(basename $$(dirname $@)); \
-	level_file=$$(basename $@ .yaml); \
-	level_idx=$${level_file%%-*}; \
-	zero_idx=$$((level_idx - 1)); \
-	GAME_TITLE="$$(yq -r '.name' data/$$game.yaml)"; \
-	LEVEL_TITLE="$$(yq -r ".levels[$$zero_idx].name" data/$$game.yaml)"; \
-	LEVEL_MAP_URL="$$(yq -r ".levels[$$zero_idx].mapUrl" data/$$game.yaml)"; \
-	GAME_SLUG="$$game"; \
-	LEVEL_NUMBER="$$level_idx"; \
-		envsubst '$${GAME_TITLE}$${LEVEL_TITLE}$${LEVEL_MAP_URL}$${GAME_SLUG}$${LEVEL_NUMBER}' < $(LEVEL_TEMPLATE) > $@
+	./scripts/generate-level-dashboard.sh $@ > $@
 
 .PHONY: dashboards
 dashboards: $(SUMMARY_DASHBOARD) $(GAME_DASHBOARDS) $(LEVEL_DASHBOARDS) ## Builds all dashboards.
