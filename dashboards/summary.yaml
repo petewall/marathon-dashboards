@@ -40,10 +40,10 @@ spec:
                                     spec:
                                         expand: true
                                         parsedQuery: |
-                                            marathon-game-data.marathon-game-data.aggregate([{"$match":{"scenario name":"  \"Marathon\", \"Marathon 2\", \"Marathon Infinity\""}},{"$project":{"_id":0,"date":"$date","durationSeconds":{"$subtract":[{"$toInt":{"$ifNull":["$end tick",0]}},{"$toInt":{"$ifNull":["$start tick",0]}}]}}},{"$sort":{"date":1}}])
+                                            marathon-game-data.marathon-game-data.aggregate([{"$match":{"scenario name":"Marathon,Marathon 2,Marathon Infinity"}},{"$project":{"_id":0,"date":"$date","durationSeconds":{"$subtract":[{"$toInt":{"$ifNull":["$end tick",0]}},{"$toInt":{"$ifNull":["$start tick",0]}}]}}},{"$sort":{"date":1}}])
                                         query: |
                                             marathon-game-data.marathon-game-data.aggregate([{
-                                              $match: { 'scenario name': '  ${games}' }
+                                              $match: { 'scenario name': '${games:raw}' }
                                             }, {
                                               $project: {
                                                 _id: 0,
@@ -68,42 +68,13 @@ spec:
                 links: []
                 title: Time played
                 vizConfig:
-                    group: timeseries
+                    group: stat
                     kind: VizConfig
                     spec:
                         fieldConfig:
                             defaults:
                                 color:
-                                    mode: palette-classic
-                                custom:
-                                    axisBorderShow: false
-                                    axisCenteredZero: false
-                                    axisColorMode: text
-                                    axisLabel: ""
-                                    axisPlacement: auto
-                                    barAlignment: 0
-                                    barWidthFactor: 0.6
-                                    drawStyle: line
-                                    fillOpacity: 0
-                                    gradientMode: none
-                                    hideFrom:
-                                        legend: false
-                                        tooltip: false
-                                        viz: false
-                                    insertNulls: false
-                                    lineInterpolation: linear
-                                    lineWidth: 1
-                                    pointSize: 5
-                                    scaleDistribution:
-                                        type: linear
-                                    showPoints: auto
-                                    showValues: false
-                                    spanNulls: false
-                                    stacking:
-                                        group: A
-                                        mode: none
-                                    thresholdsStyle:
-                                        mode: "off"
+                                    mode: thresholds
                                 thresholds:
                                     mode: absolute
                                     steps:
@@ -113,15 +84,19 @@ spec:
                                           value: 80
                             overrides: []
                         options:
-                            legend:
-                                calcs: []
-                                displayMode: list
-                                placement: bottom
-                                showLegend: true
-                            tooltip:
-                                hideZeros: false
-                                mode: single
-                                sort: none
+                            colorMode: value
+                            graphMode: area
+                            justifyMode: auto
+                            orientation: auto
+                            percentChangeColorMode: standard
+                            reduceOptions:
+                                calcs:
+                                    - lastNotNull
+                                fields: ""
+                                values: false
+                            showPercentChange: false
+                            textMode: auto
+                            wideLayout: true
                     version: 12.4.0-21496434218
     layout:
         kind: RowsLayout
@@ -132,18 +107,17 @@ spec:
                     collapse: false
                     hideHeader: false
                     layout:
-                        kind: GridLayout
+                        kind: AutoGridLayout
                         spec:
+                            columnWidthMode: standard
                             items:
-                                - kind: GridLayoutItem
+                                - kind: AutoGridLayoutItem
                                   spec:
                                     element:
                                         kind: ElementReference
                                         name: panel-1
-                                    height: 5
-                                    width: 24
-                                    x: 0
-                                    "y": 0
+                            maxColumnCount: 3
+                            rowHeightMode: short
                     repeat:
                         mode: variable
                         value: games
