@@ -39,23 +39,25 @@ spec:
                                     kind: DataQuery
                                     spec:
                                         expand: true
-                                        parsedQuery: marathon-game-data.marathon-game-data.aggregate([{"$project":{"_id":0,"date":"$date","durationSeconds":{"$subtract":[{"$toInt":{"$ifNull":["$end tick",0]}},{"$toInt":{"$ifNull":["$start tick",0]}}]}}},{"$sort":{"date":1}}])
-                                        query: |-
-                                            marathon-game-data.marathon-game-data.aggregate([
-                                              {
-                                                $project: {
-                                                  _id: 0,
-                                                  date: '$date',
-                                                  durationSeconds: {
-                                                    $subtract: [
-                                                      { $toInt: { $ifNull: ['$end tick', 0] } },
-                                                      { $toInt: { $ifNull: ['$start tick', 0] } }
-                                                    ]
-                                                  }
+                                        parsedQuery: |
+                                            marathon-game-data.marathon-game-data.aggregate([{"$match":{"scenario name":"  \"Marathon\", \"Marathon 2\", \"Marathon Infinity\""}},{"$project":{"_id":0,"date":"$date","durationSeconds":{"$subtract":[{"$toInt":{"$ifNull":["$end tick",0]}},{"$toInt":{"$ifNull":["$start tick",0]}}]}}},{"$sort":{"date":1}}])
+                                        query: |
+                                            marathon-game-data.marathon-game-data.aggregate([{
+                                              $match: { 'scenario name': '  ${games}' }
+                                            }, {
+                                              $project: {
+                                                _id: 0,
+                                                date: '$date',
+                                                durationSeconds: {
+                                                  $subtract: [
+                                                    { $toInt: { $ifNull: ['$end tick', 0] } },
+                                                    { $toInt: { $ifNull: ['$start tick', 0] } }
+                                                  ]
                                                 }
-                                              },
-                                              { $sort: { date: 1 } }
-                                            ])
+                                              }
+                                            }, {
+                                              $sort: { date: 1 }
+                                            }])
                                         queryType: query
                                     version: v0
                                 refId: A
@@ -185,18 +187,18 @@ spec:
             allowCustomValue: false
             current:
                 text:
-                    - marathon-1
-                    - marathon-2
-                    - marathon-infinity
+                    - Marathon
+                    - Marathon 2
+                    - Marathon Infinity
                 value:
-                    - marathon-1
-                    - marathon-2
-                    - marathon-infinity
+                    - Marathon
+                    - Marathon 2
+                    - Marathon Infinity
             hide: hideVariable
             includeAll: false
             multi: true
             name: games
             options: []
-            query: marathon-1,marathon-2,marathon-infinity
+            query: Marathon,Marathon 2,Marathon Infinity
             skipUrlSync: false
             valuesFormat: csv
