@@ -1,0 +1,278 @@
+{
+  "apiVersion": "dashboard.grafana.app/v2beta1",
+  "kind": "Dashboard",
+  "metadata": {
+    "name": "defc53jpn3dfr4d"
+  },
+  "spec": {
+    "annotations": [
+      {
+        "kind": "AnnotationQuery",
+        "spec": {
+          "builtIn": true,
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations \u0026 Alerts",
+          "query": {
+            "datasource": {
+              "name": "-- Grafana --"
+            },
+            "group": "grafana",
+            "kind": "DataQuery",
+            "spec": {},
+            "version": "v0"
+          }
+        }
+      }
+    ],
+    "cursorSync": "Off",
+    "description": "",
+    "editable": true,
+    "elements": {
+      "panel-1": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [],
+              "queryOptions": {},
+              "transformations": []
+            }
+          },
+          "description": "",
+          "id": 1,
+          "links": [],
+          "title": "Pistol",
+          "vizConfig": {
+            "group": "text",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {},
+                "overrides": []
+              },
+              "options": {
+                "code": {
+                  "language": "plaintext",
+                  "showLineNumbers": false,
+                  "showMiniMap": false
+                },
+                "content": "\u003cimg src=\"https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/weapons/pistol-m1.png\" /\u003e",
+                "mode": "html"
+              }
+            },
+            "version": "12.4.0-21531533851"
+          }
+        }
+      },
+      "panel-2": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "datasource": {
+                        "name": "ffbxubp3owa9sc"
+                      },
+                      "group": "grafana-mongodb-datasource",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "expand": true,
+                        "parsedQuery": "marathon-game-data.marathon-game-data.aggregate([{\"$match\":{\"scenario name\":\"Marathon\"}},{\"$group\":{\"_id\":null,\"fired\":{\"$sum\":{\"$toInt\":\"$pistol bullets fired\"}},\"hits\":{\"$sum\":{\"$toInt\":\"$pistol bullets hit\"}}}},{\"$project\":{\"fired\":1,\"hits\":1,\"accuracy\":{\"$cond\":[{\"$eq\":[\"$fired\",0]},0,{\"$divide\":[\"$hits\",\"$fired\"]}]}}}])\n",
+                        "query": "marathon-game-data.marathon-game-data.aggregate([\n    { $match: { 'scenario name': '${game}' } },\n    { $group: {\n      _id: null,\n      fired: { $sum: { $toInt: \"$pistol bullets fired\" } },\n      hits:  { $sum: { $toInt: \"$pistol bullets hit\"   } }\n    }\n  },\n  { $project: {\n    fired: 1,\n    hits: 1,\n    accuracy: {\n      $cond: [{ $eq: [\"$fired\", 0] }, 0, {$divide: [\"$hits\", \"$fired\"]}]\n      }\n    }\n  }\n])\n",
+                        "queryType": "query"
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "A"
+                  }
+                }
+              ],
+              "queryOptions": {},
+              "transformations": [
+                {
+                  "kind": "organize",
+                  "spec": {
+                    "id": "organize",
+                    "options": {
+                      "excludeByName": {
+                        "_id": true
+                      },
+                      "includeByName": {},
+                      "indexByName": {
+                        "_id": 0,
+                        "accuracy": 3,
+                        "fired": 1,
+                        "hits": 2
+                      },
+                      "renameByName": {
+                        "accuracy": "Accuracy",
+                        "fired": "Fired",
+                        "hits": "Hits"
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "description": "",
+          "id": 2,
+          "links": [],
+          "title": "",
+          "vizConfig": {
+            "group": "table",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {
+                  "color": {
+                    "mode": "continuous-RdYlGr"
+                  },
+                  "custom": {
+                    "align": "auto",
+                    "cellOptions": {
+                      "type": "auto"
+                    },
+                    "filterable": false,
+                    "footer": {
+                      "reducers": []
+                    },
+                    "inspect": false,
+                    "wrapHeaderText": false,
+                    "wrapText": false
+                  },
+                  "max": 1,
+                  "min": 0,
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": 0
+                      },
+                      {
+                        "color": "red",
+                        "value": 80
+                      }
+                    ]
+                  }
+                },
+                "overrides": [
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "Accuracy"
+                    },
+                    "properties": [
+                      {
+                        "id": "unit",
+                        "value": "percentunit"
+                      },
+                      {
+                        "id": "custom.cellOptions",
+                        "value": {
+                          "mode": "lcd",
+                          "type": "gauge",
+                          "valueDisplayMode": "text"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              "options": {
+                "cellHeight": "sm",
+                "showHeader": true
+              }
+            },
+            "version": "12.4.0-21531533851"
+          }
+        }
+      }
+    },
+    "layout": {
+      "kind": "GridLayout",
+      "spec": {
+        "items": [
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-1"
+              },
+              "height": 4,
+              "width": 2,
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-2"
+              },
+              "height": 4,
+              "width": 12,
+              "x": 2,
+              "y": 0
+            }
+          }
+        ]
+      }
+    },
+    "links": [],
+    "liveNow": false,
+    "preload": false,
+    "tags": [],
+    "timeSettings": {
+      "autoRefresh": "",
+      "autoRefreshIntervals": [
+        "5s",
+        "10s",
+        "30s",
+        "1m",
+        "5m",
+        "15m",
+        "30m",
+        "1h",
+        "2h",
+        "1d"
+      ],
+      "fiscalYearStartMonth": 0,
+      "from": "now-6h",
+      "hideTimepicker": false,
+      "timezone": "browser",
+      "to": "now"
+    },
+    "title": "Summary",
+    "variables": [
+      {
+        "kind": "ConstantVariable",
+        "spec": {
+          "current": {
+            "text": "Marathon",
+            "value": "Marathon"
+          },
+          "description": "",
+          "hide": "hideVariable",
+          "label": "",
+          "name": "game",
+          "query": "Marathon",
+          "skipUrlSync": true
+        }
+      }
+    ]
+  }
+}
