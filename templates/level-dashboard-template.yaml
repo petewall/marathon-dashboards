@@ -1,6 +1,8 @@
 ---
 apiVersion: dashboard.grafana.app/v2beta1
 kind: Dashboard
+metadata:
+  
 spec:
   annotations:
     - kind: AnnotationQuery

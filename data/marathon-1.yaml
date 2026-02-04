@@ -6,18 +6,18 @@ weapons:
   - name: fist
     firedMetric: null
     hitMetric: null
-  - name: pistol
+  - name: Pistol
     firedMetric: pistol bullets fired
     hitMetric: pistol bullets hit
-    image: http://...
-  - name: assault rifle
+    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/weapons/pistol-m1.png
+  - name: Rifle
     firedMetric: rifle bullets fired
     hitMetric: rifle bullets hit
-    image: http://...
-  - name: grenade launcher
+    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/weapons/rifle-m1.png
+  - name: Grenade launcher
     firedMetric: grenades fired
     hitMetric: grenades hit
-    image: http://...
+    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/weapons/rifle-m1.png
 monsters:
   - name: minor fighter
     image: http://...
