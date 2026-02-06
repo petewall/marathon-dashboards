@@ -30,43 +30,6 @@
     "description": "",
     "editable": true,
     "elements": {
-      "panel-1": {
-        "kind": "Panel",
-        "spec": {
-          "data": {
-            "kind": "QueryGroup",
-            "spec": {
-              "queries": [],
-              "queryOptions": {},
-              "transformations": []
-            }
-          },
-          "description": "",
-          "id": 1,
-          "links": [],
-          "title": "Pistol",
-          "vizConfig": {
-            "group": "text",
-            "kind": "VizConfig",
-            "spec": {
-              "fieldConfig": {
-                "defaults": {},
-                "overrides": []
-              },
-              "options": {
-                "code": {
-                  "language": "plaintext",
-                  "showLineNumbers": false,
-                  "showMiniMap": false
-                },
-                "content": "\u003cimg src=\"https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/weapons/pistol-m1.png\" /\u003e",
-                "mode": "html"
-              }
-            },
-            "version": "12.4.0-21531533851"
-          }
-        }
-      },
       "panel-2": {
         "kind": "Panel",
         "spec": {
@@ -86,8 +49,8 @@
                       "kind": "DataQuery",
                       "spec": {
                         "expand": true,
-                        "parsedQuery": "marathon-game-data.marathon-game-data.aggregate([{\"$match\":{\"scenario name\":\"Marathon\"}},{\"$group\":{\"_id\":null,\"fired\":{\"$sum\":{\"$toInt\":\"$pistol bullets fired\"}},\"hits\":{\"$sum\":{\"$toInt\":\"$pistol bullets hit\"}}}},{\"$project\":{\"fired\":1,\"hits\":1,\"accuracy\":{\"$cond\":[{\"$eq\":[\"$fired\",0]},0,{\"$divide\":[\"$hits\",\"$fired\"]}]}}}])\n",
-                        "query": "marathon-game-data.marathon-game-data.aggregate([\n    { $match: { 'scenario name': '${game}' } },\n    { $group: {\n      _id: null,\n      fired: { $sum: { $toInt: \"$pistol bullets fired\" } },\n      hits:  { $sum: { $toInt: \"$pistol bullets hit\"   } }\n    }\n  },\n  { $project: {\n    fired: 1,\n    hits: 1,\n    accuracy: {\n      $cond: [{ $eq: [\"$fired\", 0] }, 0, {$divide: [\"$hits\", \"$fired\"]}]\n      }\n    }\n  }\n])\n",
+                        "parsedQuery": "marathon-game-data.marathon-game-data.aggregate([{\"$match\":{\"scenario name\":\"Marathon\"}},{\"$group\":{\"_id\":null,\"pistolFired\":{\"$sum\":{\"$toInt\":{\"$ifNull\":[\"$pistol bullets fired\",0]}}},\"pistolHits\":{\"$sum\":{\"$toInt\":{\"$ifNull\":[\"$pistol bullets hit\",0]}}},\"rifleFired\":{\"$sum\":{\"$toInt\":{\"$ifNull\":[\"$rifle bullets fired\",0]}}},\"rifleHits\":{\"$sum\":{\"$toInt\":{\"$ifNull\":[\"$rifle bullets hit\",0]}}},\"grenade_launcherFired\":{\"$sum\":{\"$toInt\":{\"$ifNull\":[\"$grenades fired\",0]}}},\"grenade_launcherHits\":{\"$sum\":{\"$toInt\":{\"$ifNull\":[\"$grenades hit\",0]}}}}},{\"$project\":{\"_id\":0,\"weapons\":[{\"name\":\"Pistol\",\"image\":\"https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/weapons/pistol-m1.png\",\"fired\":\"$pistolFired\",\"hits\":\"$pistolHits\",\"accuracy\":{\"$cond\":[{\"$eq\":[\"$pistolFired\",0]},0,{\"$divide\":[\"$pistolHits\",\"$pistolFired\"]}]}},{\"name\":\"Rifle\",\"image\":\"https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/weapons/rifle-m1.png\",\"fired\":\"$rifleFired\",\"hits\":\"$rifleHits\",\"accuracy\":{\"$cond\":[{\"$eq\":[\"$rifleFired\",0]},0,{\"$divide\":[\"$rifleHits\",\"$rifleFired\"]}]}},{\"name\":\"Grenade launcher\",\"image\":\"https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/weapons/rifle-m1.png\",\"fired\":\"$grenade_launcherFired\",\"hits\":\"$grenade_launcherHits\",\"accuracy\":{\"$cond\":[{\"$eq\":[\"$grenade_launcherFired\",0]},0,{\"$divide\":[\"$grenade_launcherHits\",\"$grenade_launcherFired\"]}]}}]}},{\"$unwind\":\"$weapons\"},{\"$replaceRoot\":{\"newRoot\":\"$weapons\"}}])\n",
+                        "query": "marathon-game-data.marathon-game-data.aggregate([\n  {\n    '$match': {\n      'scenario name': '${game}'\n    }\n  },\n  {\n    '$group': {\n      _id: null,\n      pistolFired: {\n        '$sum': {\n          '$toInt': {\n            '$ifNull': [\n              '$pistol bullets fired',\n              0\n            ]\n          }\n        }\n      },\n      pistolHits: {\n        '$sum': {\n          '$toInt': {\n            '$ifNull': [\n              '$pistol bullets hit',\n              0\n            ]\n          }\n        }\n      },\n      rifleFired: {\n        '$sum': {\n          '$toInt': {\n            '$ifNull': [\n              '$rifle bullets fired',\n              0\n            ]\n          }\n        }\n      },\n      rifleHits: {\n        '$sum': {\n          '$toInt': {\n            '$ifNull': [\n              '$rifle bullets hit',\n              0\n            ]\n          }\n        }\n      },\n      grenade_launcherFired: {\n        '$sum': {\n          '$toInt': {\n            '$ifNull': [\n              '$grenades fired',\n              0\n            ]\n          }\n        }\n      },\n      grenade_launcherHits: {\n        '$sum': {\n          '$toInt': {\n            '$ifNull': [\n              '$grenades hit',\n              0\n            ]\n          }\n        }\n      }\n    }\n  },\n  {\n    '$project': {\n      _id: 0,\n      weapons: [\n        {\n          name: 'Pistol',\n          image: 'https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/weapons/pistol-m1.png',\n          fired: '$pistolFired',\n          hits: '$pistolHits',\n          accuracy: {\n            '$cond': [\n              {\n                '$eq': [\n                  '$pistolFired',\n                  0\n                ]\n              },\n              0,\n              {\n                '$divide': [\n                  '$pistolHits',\n                  '$pistolFired'\n                ]\n              }\n            ]\n          }\n        },\n        {\n          name: 'Rifle',\n          image: 'https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/weapons/rifle-m1.png',\n          fired: '$rifleFired',\n          hits: '$rifleHits',\n          accuracy: {\n            '$cond': [\n              {\n                '$eq': [\n                  '$rifleFired',\n                  0\n                ]\n              },\n              0,\n              {\n                '$divide': [\n                  '$rifleHits',\n                  '$rifleFired'\n                ]\n              }\n            ]\n          }\n        },\n        {\n          name: 'Grenade launcher',\n          image: 'https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/weapons/rifle-m1.png',\n          fired: '$grenade_launcherFired',\n          hits: '$grenade_launcherHits',\n          accuracy: {\n            '$cond': [\n              {\n                '$eq': [\n                  '$grenade_launcherFired',\n                  0\n                ]\n              },\n              0,\n              {\n                '$divide': [\n                  '$grenade_launcherHits',\n                  '$grenade_launcherFired'\n                ]\n              }\n            ]\n          }\n        }\n      ]\n    }\n  },\n  {\n    '$unwind': '$weapons'\n  },\n  {\n    '$replaceRoot': {\n      newRoot: '$weapons'\n    }\n  }\n])\n",
                         "queryType": "query"
                       },
                       "version": "v0"
@@ -108,15 +71,18 @@
                       },
                       "includeByName": {},
                       "indexByName": {
-                        "_id": 0,
-                        "accuracy": 3,
-                        "fired": 1,
-                        "hits": 2
+                        "accuracy": 4,
+                        "fired": 2,
+                        "hits": 3,
+                        "image": 0,
+                        "name": 1
                       },
                       "renameByName": {
                         "accuracy": "Accuracy",
                         "fired": "Fired",
-                        "hits": "Hits"
+                        "hits": "Hits",
+                        "image": " ",
+                        "name": "  "
                       }
                     }
                   }
@@ -186,6 +152,36 @@
                         }
                       }
                     ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": " "
+                    },
+                    "properties": [
+                      {
+                        "id": "custom.cellOptions",
+                        "value": {
+                          "type": "image"
+                        }
+                      },
+                      {
+                        "id": "custom.width",
+                        "value": 65
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "  "
+                    },
+                    "properties": [
+                      {
+                        "id": "custom.width",
+                        "value": 155
+                      }
+                    ]
                   }
                 ]
               },
@@ -208,31 +204,31 @@
             "spec": {
               "element": {
                 "kind": "ElementReference",
-                "name": "panel-1"
-              },
-              "height": 4,
-              "width": 2,
-              "x": 0,
-              "y": 0
-            }
-          },
-          {
-            "kind": "GridLayoutItem",
-            "spec": {
-              "element": {
-                "kind": "ElementReference",
                 "name": "panel-2"
               },
-              "height": 4,
-              "width": 12,
-              "x": 2,
+              "height": 5,
+              "width": 13,
+              "x": 0,
               "y": 0
             }
           }
         ]
       }
     },
-    "links": [],
+    "links": [
+      {
+        "asDropdown": false,
+        "icon": "external link",
+        "includeVars": false,
+        "keepTime": false,
+        "tags": [],
+        "targetBlank": true,
+        "title": "Source (GitHub)",
+        "tooltip": "View source file in repository",
+        "type": "link",
+        "url": "https://github.com/petewall/marathon-dashboards/blob/main/dashboards/Marathon/summary.json"
+      }
+    ],
     "liveNow": false,
     "preload": false,
     "tags": [],
