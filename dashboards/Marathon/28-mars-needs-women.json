@@ -2,7 +2,7 @@
   "apiVersion": "dashboard.grafana.app/v2beta1",
   "kind": "Dashboard",
   "metadata": {
-    "name": "dunlww9j3pzechd"
+    "name": "dgcktwlz77d4caz"
   },
   "spec": {
     "annotations": [
@@ -60,7 +60,7 @@
       "timezone": "browser",
       "to": "now"
     },
-    "title": "02 - Bigger Guns Nearby",
+    "title": "28 - Mars Needs Women",
     "variables": []
   }
 }

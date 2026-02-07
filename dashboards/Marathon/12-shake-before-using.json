@@ -2,7 +2,7 @@
   "apiVersion": "dashboard.grafana.app/v2beta1",
   "kind": "Dashboard",
   "metadata": {
-    "name": "dunlww9j3pzechd"
+    "name": "drgyldu04ng0coe"
   },
   "spec": {
     "annotations": [
@@ -60,7 +60,7 @@
       "timezone": "browser",
       "to": "now"
     },
-    "title": "02 - Bigger Guns Nearby",
+    "title": "12 - Shake Before Using...",
     "variables": []
   }
 }

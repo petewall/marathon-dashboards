@@ -2,7 +2,7 @@
   "apiVersion": "dashboard.grafana.app/v2beta1",
   "kind": "Dashboard",
   "metadata": {
-    "name": "dunlww9j3pzechd"
+    "name": "dp8lqa9m4vt0k5h"
   },
   "spec": {
     "annotations": [
@@ -60,7 +60,7 @@
       "timezone": "browser",
       "to": "now"
     },
-    "title": "02 - Bigger Guns Nearby",
+    "title": "25 - Welcome to the Revolution...",
     "variables": []
   }
 }
