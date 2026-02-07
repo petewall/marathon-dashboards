@@ -218,6 +218,7 @@
                 "overrides": []
               },
               "options": {
+                "folderUID": "marathon-bplfvndq-4h1hmovj3mr7kus3qkjeuo",
                 "includeVars": false,
                 "keepTime": false,
                 "maxItems": 100,
@@ -225,7 +226,7 @@
                 "showFolderNames": true,
                 "showHeadings": true,
                 "showRecentlyViewed": false,
-                "showSearch": false,
+                "showSearch": true,
                 "showStarred": false,
                 "tags": [
                   "level",
