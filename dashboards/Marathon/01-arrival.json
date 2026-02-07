@@ -13,7 +13,7 @@
           "enable": true,
           "hide": true,
           "iconColor": "rgba(0, 211, 255, 1)",
-          "name": "Annotations & Alerts",
+          "name": "Annotations \u0026 Alerts",
           "query": {
             "datasource": {
               "name": "-- Grafana --"
@@ -187,6 +187,132 @@
             "version": "12.4.0-21710221776"
           }
         }
+      },
+      "panel-2": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "datasource": {
+                        "name": "ffbxubp3owa9sc"
+                      },
+                      "group": "grafana-mongodb-datasource",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "parsedQuery": "marathon-game-data.marathon-game-data.aggregate([{\"$match\":{\"scenario name\":\"Marathon\",\"level index\":\"0\"}},{\"$group\":{\"_id\":null,\"minor_fighterKills\":{\"$sum\":{\"$toInt\":{\"$ifNull\":[\"$minor fighter kills\",0]}}},\"minor_fighterPunchKills\":{\"$sum\":{\"$toInt\":{\"$ifNull\":[\"$minor fighter punch kills\",0]}}},\"minor_fighterSpared\":{\"$sum\":{\"$toInt\":{\"$ifNull\":[\"$minor fighters spared\",0]}}}}},{\"$project\":{\"_id\":0,\"monsters\":[{\"name\":\"minor fighter\",\"image\":\"https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/fighter-minor.png\",\"kills\":\"$minor_fighterKills\",\"punchKills\":\"$minor_fighterPunchKills\",\"spared\":\"$minor_fighterSpared\"}]}},{\"$unwind\":\"$monsters\"},{\"$replaceRoot\":{\"newRoot\":\"$monsters\"}}])\n",
+                        "query": "marathon-game-data.marathon-game-data.aggregate([\n  {\n    '$match': {\n      'scenario name': '${game}',\n      'level index': '${levelIndex}'\n    }\n  },\n  {\n    '$group': {\n      _id: null,\n      minor_fighterKills: {\n        '$sum': {\n          '$toInt': {\n            '$ifNull': [\n              '$minor fighter kills',\n              0\n            ]\n          }\n        }\n      },\n      minor_fighterPunchKills: {\n        '$sum': {\n          '$toInt': {\n            '$ifNull': [\n              '$minor fighter punch kills',\n              0\n            ]\n          }\n        }\n      },\n      minor_fighterSpared: {\n        '$sum': {\n          '$toInt': {\n            '$ifNull': [\n              '$minor fighters spared',\n              0\n            ]\n          }\n        }\n      }\n    }\n  },\n  {\n    '$project': {\n      _id: 0,\n      monsters: [\n        {\n          name: 'minor fighter',\n          image: 'https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/fighter-minor.png',\n          kills: '$minor_fighterKills',\n          punchKills: '$minor_fighterPunchKills',\n          spared: '$minor_fighterSpared'\n        }\n      ]\n    }\n  },\n  {\n    '$unwind': '$monsters'\n  },\n  {\n    '$replaceRoot': {\n      newRoot: '$monsters'\n    }\n  }\n])\n",
+                        "queryType": "query"
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "A"
+                  }
+                }
+              ],
+              "queryOptions": {},
+              "transformations": [
+                {
+                  "kind": "organize",
+                  "spec": {
+                    "id": "organize",
+                    "options": {
+                      "excludeByName": {},
+                      "includeByName": {},
+                      "indexByName": {
+                        "image": 0,
+                        "kills": 2,
+                        "name": 1,
+                        "punchKills": 3,
+                        "spared": 4
+                      },
+                      "renameByName": {
+                        "image": " ",
+                        "kills": "Kills",
+                        "name": "  ",
+                        "punchKills": "Punch Kills",
+                        "spared": "Spared"
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "description": "",
+          "id": 2,
+          "links": [],
+          "title": "",
+          "vizConfig": {
+            "group": "table",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {
+                  "color": {
+                    "mode": "thresholds"
+                  },
+                  "custom": {
+                    "align": "auto",
+                    "cellOptions": {
+                      "type": "auto"
+                    },
+                    "footer": {
+                      "reducers": []
+                    },
+                    "inspect": false
+                  },
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": 0
+                      },
+                      {
+                        "color": "red",
+                        "value": 80
+                      }
+                    ]
+                  }
+                },
+                "overrides": [
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": " "
+                    },
+                    "properties": [
+                      {
+                        "id": "custom.cellOptions",
+                        "value": {
+                          "type": "image"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              "options": {
+                "cellHeight": "sm",
+                "showHeader": true,
+                "sortBy": [
+                  {
+                    "desc": false,
+                    "displayName": "  "
+                  }
+                ]
+              }
+            },
+            "version": "12.4.0-21710221776"
+          }
+        }
       }
     },
     "layout": {
@@ -200,6 +326,15 @@
               "element": {
                 "kind": "ElementReference",
                 "name": "panel-1"
+              }
+            }
+          },
+          {
+            "kind": "AutoGridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-2"
               }
             }
           }
