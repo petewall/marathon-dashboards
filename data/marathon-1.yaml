@@ -20,31 +20,35 @@ weapons:
     image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/weapons/rifle-m1.png
 monsters:
   - name: minor fighter
-    image: http://...
+    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/fighter-minor.png
     killsMetric: minor fighter kills
     punchKillsMetric: minor fighter punch kills
     sparedMetric: minor fighters spared
   - name: minor projectile fighter
-    image: http://...
+    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/fighter-projectile-minor.png
     killsMetric: minor projectile fighter kills
     punchKillsMetric: minor projectile fighter punch kills
     sparedMetric: minor projectile fighters spared
   - name: minor compiler
-    image: http://...
+    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/spht-minor-m1.png
     killsMetric: minor compiler kills
     punchKillsMetric: minor compiler punch kills
   - name: major fighter
-    image: http://...
+    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/fighter-major.png
     killsMetric: major fighter kills
   - name: major projectile fighter
-    image: http://...
+    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/fighter-projectile-major.png
     killsMetric: major projectile fighter kills
   - name: minor trooper
-    image: http://...
+    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/trooper-minor.png
     killsMetric: minor trooper kills
   - name: minor hulk
-    image: http://...
+    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/hulk.png
     killsMetric: minor hulk kills
+  - name: wasp
+    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/wasp-m1.png
+    killsMetric: minor wasp kills
+    punchKillsMetric: minor wasp punch kills
   - name: crew bob
     image: http://...
     killsMetric: crew bob kills
