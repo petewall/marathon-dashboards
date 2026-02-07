@@ -39,7 +39,10 @@
     "links": [],
     "liveNow": false,
     "preload": false,
-    "tags": [],
+    "tags": [
+      "level",
+      "marathon"
+    ],
     "timeSettings": {
       "autoRefresh": "",
       "autoRefreshIntervals": [
@@ -61,6 +64,52 @@
       "to": "now"
     },
     "title": "10 - Blaspheme Quarantine",
-    "variables": []
+    "variables": [
+      {
+        "kind": "ConstantVariable",
+        "spec": {
+          "current": {
+            "text": "Marathon",
+            "value": "Marathon"
+          },
+          "description": "",
+          "hide": "hideVariable",
+          "label": "",
+          "name": "game",
+          "query": "Marathon",
+          "skipUrlSync": true
+        }
+      },
+      {
+        "kind": "ConstantVariable",
+        "spec": {
+          "current": {
+            "text": "Blaspheme Quarantine",
+            "value": "Blaspheme Quarantine"
+          },
+          "description": "",
+          "hide": "hideVariable",
+          "label": "",
+          "name": "level",
+          "query": "Blaspheme Quarantine",
+          "skipUrlSync": true
+        }
+      },
+      {
+        "kind": "ConstantVariable",
+        "spec": {
+          "current": {
+            "text": "9",
+            "value": "9"
+          },
+          "description": "",
+          "hide": "hideVariable",
+          "label": "",
+          "name": "levelIndex",
+          "query": "9",
+          "skipUrlSync": true
+        }
+      }
+    ]
   }
 }

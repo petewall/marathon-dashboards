@@ -39,7 +39,10 @@
     "links": [],
     "liveNow": false,
     "preload": false,
-    "tags": [],
+    "tags": [
+      "level",
+      "marathon"
+    ],
     "timeSettings": {
       "autoRefresh": "",
       "autoRefreshIntervals": [
@@ -61,6 +64,52 @@
       "to": "now"
     },
     "title": "22 - Eupfhoria",
-    "variables": []
+    "variables": [
+      {
+        "kind": "ConstantVariable",
+        "spec": {
+          "current": {
+            "text": "Marathon",
+            "value": "Marathon"
+          },
+          "description": "",
+          "hide": "hideVariable",
+          "label": "",
+          "name": "game",
+          "query": "Marathon",
+          "skipUrlSync": true
+        }
+      },
+      {
+        "kind": "ConstantVariable",
+        "spec": {
+          "current": {
+            "text": "Eupfhoria",
+            "value": "Eupfhoria"
+          },
+          "description": "",
+          "hide": "hideVariable",
+          "label": "",
+          "name": "level",
+          "query": "Eupfhoria",
+          "skipUrlSync": true
+        }
+      },
+      {
+        "kind": "ConstantVariable",
+        "spec": {
+          "current": {
+            "text": "21",
+            "value": "21"
+          },
+          "description": "",
+          "hide": "hideVariable",
+          "label": "",
+          "name": "levelIndex",
+          "query": "21",
+          "skipUrlSync": true
+        }
+      }
+    ]
   }
 }

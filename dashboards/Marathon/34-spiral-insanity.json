@@ -39,7 +39,10 @@
     "links": [],
     "liveNow": false,
     "preload": false,
-    "tags": [],
+    "tags": [
+      "level",
+      "marathon"
+    ],
     "timeSettings": {
       "autoRefresh": "",
       "autoRefreshIntervals": [
@@ -61,6 +64,52 @@
       "to": "now"
     },
     "title": "34 - Spiral Insanity",
-    "variables": []
+    "variables": [
+      {
+        "kind": "ConstantVariable",
+        "spec": {
+          "current": {
+            "text": "Marathon",
+            "value": "Marathon"
+          },
+          "description": "",
+          "hide": "hideVariable",
+          "label": "",
+          "name": "game",
+          "query": "Marathon",
+          "skipUrlSync": true
+        }
+      },
+      {
+        "kind": "ConstantVariable",
+        "spec": {
+          "current": {
+            "text": "Spiral Insanity",
+            "value": "Spiral Insanity"
+          },
+          "description": "",
+          "hide": "hideVariable",
+          "label": "",
+          "name": "level",
+          "query": "Spiral Insanity",
+          "skipUrlSync": true
+        }
+      },
+      {
+        "kind": "ConstantVariable",
+        "spec": {
+          "current": {
+            "text": "33",
+            "value": "33"
+          },
+          "description": "",
+          "hide": "hideVariable",
+          "label": "",
+          "name": "levelIndex",
+          "query": "33",
+          "skipUrlSync": true
+        }
+      }
+    ]
   }
 }

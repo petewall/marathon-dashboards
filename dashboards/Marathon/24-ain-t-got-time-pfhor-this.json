@@ -39,7 +39,10 @@
     "links": [],
     "liveNow": false,
     "preload": false,
-    "tags": [],
+    "tags": [
+      "level",
+      "marathon"
+    ],
     "timeSettings": {
       "autoRefresh": "",
       "autoRefreshIntervals": [
@@ -61,6 +64,52 @@
       "to": "now"
     },
     "title": "24 - Ain't Got Time Pfhor This...",
-    "variables": []
+    "variables": [
+      {
+        "kind": "ConstantVariable",
+        "spec": {
+          "current": {
+            "text": "Marathon",
+            "value": "Marathon"
+          },
+          "description": "",
+          "hide": "hideVariable",
+          "label": "",
+          "name": "game",
+          "query": "Marathon",
+          "skipUrlSync": true
+        }
+      },
+      {
+        "kind": "ConstantVariable",
+        "spec": {
+          "current": {
+            "text": "Ain't Got Time Pfhor This...",
+            "value": "Ain't Got Time Pfhor This..."
+          },
+          "description": "",
+          "hide": "hideVariable",
+          "label": "",
+          "name": "level",
+          "query": "Ain't Got Time Pfhor This...",
+          "skipUrlSync": true
+        }
+      },
+      {
+        "kind": "ConstantVariable",
+        "spec": {
+          "current": {
+            "text": "23",
+            "value": "23"
+          },
+          "description": "",
+          "hide": "hideVariable",
+          "label": "",
+          "name": "levelIndex",
+          "query": "23",
+          "skipUrlSync": true
+        }
+      }
+    ]
   }
 }

@@ -39,7 +39,10 @@
     "links": [],
     "liveNow": false,
     "preload": false,
-    "tags": [],
+    "tags": [
+      "level",
+      "marathon"
+    ],
     "timeSettings": {
       "autoRefresh": "",
       "autoRefreshIntervals": [
@@ -61,6 +64,52 @@
       "to": "now"
     },
     "title": "26 - Try again",
-    "variables": []
+    "variables": [
+      {
+        "kind": "ConstantVariable",
+        "spec": {
+          "current": {
+            "text": "Marathon",
+            "value": "Marathon"
+          },
+          "description": "",
+          "hide": "hideVariable",
+          "label": "",
+          "name": "game",
+          "query": "Marathon",
+          "skipUrlSync": true
+        }
+      },
+      {
+        "kind": "ConstantVariable",
+        "spec": {
+          "current": {
+            "text": "Try again",
+            "value": "Try again"
+          },
+          "description": "",
+          "hide": "hideVariable",
+          "label": "",
+          "name": "level",
+          "query": "Try again",
+          "skipUrlSync": true
+        }
+      },
+      {
+        "kind": "ConstantVariable",
+        "spec": {
+          "current": {
+            "text": "25",
+            "value": "25"
+          },
+          "description": "",
+          "hide": "hideVariable",
+          "label": "",
+          "name": "levelIndex",
+          "query": "25",
+          "skipUrlSync": true
+        }
+      }
+    ]
   }
 }
