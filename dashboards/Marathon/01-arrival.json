@@ -206,8 +206,8 @@
                       "group": "grafana-mongodb-datasource",
                       "kind": "DataQuery",
                       "spec": {
-                        "parsedQuery": "marathon-game-data.marathon-game-data.aggregate([{\"$match\":{\"scenario name\":\"Marathon\",\"level index\":\"0\"}},{\"$group\":{\"_id\":null,\"minor_fighterKills\":{\"$sum\":{\"$toInt\":{\"$ifNull\":[\"$minor fighter kills\",0]}}},\"minor_fighterPunchKills\":{\"$sum\":{\"$toInt\":{\"$ifNull\":[\"$minor fighter punch kills\",0]}}},\"minor_fighterSpared\":{\"$sum\":{\"$toInt\":{\"$ifNull\":[\"$minor fighters spared\",0]}}}}},{\"$project\":{\"_id\":0,\"monsters\":[{\"name\":\"minor fighter\",\"image\":\"https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/fighter-minor.png\",\"kills\":\"$minor_fighterKills\",\"punchKills\":\"$minor_fighterPunchKills\",\"spared\":\"$minor_fighterSpared\"}]}},{\"$unwind\":\"$monsters\"},{\"$replaceRoot\":{\"newRoot\":\"$monsters\"}}])\n",
-                        "query": "marathon-game-data.marathon-game-data.aggregate([\n  {\n    '$match': {\n      'scenario name': '${game}',\n      'level index': '${levelIndex}'\n    }\n  },\n  {\n    '$group': {\n      _id: null,\n      minor_fighterKills: {\n        '$sum': {\n          '$toInt': {\n            '$ifNull': [\n              '$minor fighter kills',\n              0\n            ]\n          }\n        }\n      },\n      minor_fighterPunchKills: {\n        '$sum': {\n          '$toInt': {\n            '$ifNull': [\n              '$minor fighter punch kills',\n              0\n            ]\n          }\n        }\n      },\n      minor_fighterSpared: {\n        '$sum': {\n          '$toInt': {\n            '$ifNull': [\n              '$minor fighters spared',\n              0\n            ]\n          }\n        }\n      }\n    }\n  },\n  {\n    '$project': {\n      _id: 0,\n      monsters: [\n        {\n          name: 'minor fighter',\n          image: 'https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/fighter-minor.png',\n          kills: '$minor_fighterKills',\n          punchKills: '$minor_fighterPunchKills',\n          spared: '$minor_fighterSpared'\n        }\n      ]\n    }\n  },\n  {\n    '$unwind': '$monsters'\n  },\n  {\n    '$replaceRoot': {\n      newRoot: '$monsters'\n    }\n  }\n])\n",
+                        "parsedQuery": "marathon-game-data.marathon-game-data.aggregate([{\"$match\":{\"scenario name\":\"Marathon\",\"level index\":\"0\"}},{\"$group\":{\"_id\":null,\"minor_fighterKills\":{\"$sum\":{\"$toInt\":{\"$ifNull\":[\"$minor fighter kills\",0]}}},\"minor_fighterPunchKills\":{\"$sum\":{\"$toInt\":{\"$ifNull\":[\"$minor fighter punch kills\",0]}}},\"minor_fighterSpared\":{\"$sum\":{\"$toInt\":{\"$ifNull\":[\"$minor fighters spared\",0]}}}}},{\"$project\":{\"_id\":0,\"monsters\":[{\"name\":\"Minor Fighter\",\"image\":\"https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/fighter-minor.png\",\"kills\":\"$minor_fighterKills\",\"punchKills\":\"$minor_fighterPunchKills\",\"spared\":\"$minor_fighterSpared\"}]}},{\"$unwind\":\"$monsters\"},{\"$replaceRoot\":{\"newRoot\":\"$monsters\"}}])\n",
+                        "query": "marathon-game-data.marathon-game-data.aggregate([\n  {\n    '$match': {\n      'scenario name': '${game}',\n      'level index': '${levelIndex}'\n    }\n  },\n  {\n    '$group': {\n      _id: null,\n      minor_fighterKills: {\n        '$sum': {\n          '$toInt': {\n            '$ifNull': [\n              '$minor fighter kills',\n              0\n            ]\n          }\n        }\n      },\n      minor_fighterPunchKills: {\n        '$sum': {\n          '$toInt': {\n            '$ifNull': [\n              '$minor fighter punch kills',\n              0\n            ]\n          }\n        }\n      },\n      minor_fighterSpared: {\n        '$sum': {\n          '$toInt': {\n            '$ifNull': [\n              '$minor fighters spared',\n              0\n            ]\n          }\n        }\n      }\n    }\n  },\n  {\n    '$project': {\n      _id: 0,\n      monsters: [\n        {\n          name: 'Minor Fighter',\n          image: 'https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/fighter-minor.png',\n          kills: '$minor_fighterKills',\n          punchKills: '$minor_fighterPunchKills',\n          spared: '$minor_fighterSpared'\n        }\n      ]\n    }\n  },\n  {\n    '$unwind': '$monsters'\n  },\n  {\n    '$replaceRoot': {\n      newRoot: '$monsters'\n    }\n  }\n])\n",
                         "queryType": "query"
                       },
                       "version": "v0"
@@ -294,6 +294,22 @@
                         "value": {
                           "type": "image"
                         }
+                      },
+                      {
+                        "id": "custom.width",
+                        "value": 50
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "  "
+                    },
+                    "properties": [
+                      {
+                        "id": "custom.width",
+                        "value": 128
                       }
                     ]
                   }
