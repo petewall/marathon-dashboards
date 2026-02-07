@@ -190,29 +190,80 @@
                 "showHeader": true
               }
             },
-            "version": "12.4.0-21531533851"
+            "version": "12.4.0-21710221776"
+          }
+        }
+      },
+      "panel-3": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [],
+              "queryOptions": {},
+              "transformations": []
+            }
+          },
+          "description": "",
+          "id": 3,
+          "links": [],
+          "title": "Levels",
+          "vizConfig": {
+            "group": "dashlist",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {},
+                "overrides": []
+              },
+              "options": {
+                "includeVars": false,
+                "keepTime": false,
+                "maxItems": 100,
+                "query": "",
+                "showFolderNames": true,
+                "showHeadings": true,
+                "showRecentlyViewed": false,
+                "showSearch": false,
+                "showStarred": false,
+                "tags": [
+                  "level",
+                  "marathon"
+                ]
+              }
+            },
+            "version": "12.4.0-21710221776"
           }
         }
       }
     },
     "layout": {
-      "kind": "GridLayout",
+      "kind": "AutoGridLayout",
       "spec": {
+        "columnWidthMode": "standard",
         "items": [
           {
-            "kind": "GridLayoutItem",
+            "kind": "AutoGridLayoutItem",
             "spec": {
               "element": {
                 "kind": "ElementReference",
                 "name": "panel-2"
-              },
-              "height": 5,
-              "width": 13,
-              "x": 0,
-              "y": 0
+              }
+            }
+          },
+          {
+            "kind": "AutoGridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-3"
+              }
             }
           }
-        ]
+        ],
+        "maxColumnCount": 3,
+        "rowHeightMode": "standard"
       }
     },
     "links": [
