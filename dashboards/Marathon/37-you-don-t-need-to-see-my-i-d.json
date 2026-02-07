@@ -29,11 +29,183 @@
     "cursorSync": "Off",
     "description": "",
     "editable": true,
-    "elements": {},
+    "elements": {
+      "panel-1": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "datasource": {
+                        "name": "ffbxubp3owa9sc"
+                      },
+                      "group": "grafana-mongodb-datasource",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "parsedQuery": "marathon-game-data.marathon-game-data.aggregate([{\"$match\":{\"scenario name\":\"Marathon\",\"level index\":\"36\"}},{\"$group\":{\"_id\":null,\"pistolFired\":{\"$sum\":{\"$toInt\":{\"$ifNull\":[\"$pistol bullets fired\",0]}}},\"pistolHits\":{\"$sum\":{\"$toInt\":{\"$ifNull\":[\"$pistol bullets hit\",0]}}},\"rifleFired\":{\"$sum\":{\"$toInt\":{\"$ifNull\":[\"$rifle bullets fired\",0]}}},\"rifleHits\":{\"$sum\":{\"$toInt\":{\"$ifNull\":[\"$rifle bullets hit\",0]}}},\"grenade_launcherFired\":{\"$sum\":{\"$toInt\":{\"$ifNull\":[\"$grenades fired\",0]}}},\"grenade_launcherHits\":{\"$sum\":{\"$toInt\":{\"$ifNull\":[\"$grenades hit\",0]}}}}},{\"$project\":{\"_id\":0,\"weapons\":[{\"name\":\"Pistol\",\"image\":\"https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/weapons/pistol-m1.png\",\"fired\":\"$pistolFired\",\"hits\":\"$pistolHits\",\"accuracy\":{\"$cond\":[{\"$eq\":[\"$pistolFired\",0]},0,{\"$divide\":[\"$pistolHits\",\"$pistolFired\"]}]}},{\"name\":\"Rifle\",\"image\":\"https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/weapons/rifle-m1.png\",\"fired\":\"$rifleFired\",\"hits\":\"$rifleHits\",\"accuracy\":{\"$cond\":[{\"$eq\":[\"$rifleFired\",0]},0,{\"$divide\":[\"$rifleHits\",\"$rifleFired\"]}]}},{\"name\":\"Grenade launcher\",\"image\":\"https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/weapons/rifle-m1.png\",\"fired\":\"$grenade_launcherFired\",\"hits\":\"$grenade_launcherHits\",\"accuracy\":{\"$cond\":[{\"$eq\":[\"$grenade_launcherFired\",0]},0,{\"$divide\":[\"$grenade_launcherHits\",\"$grenade_launcherFired\"]}]}}]}},{\"$unwind\":\"$weapons\"},{\"$replaceRoot\":{\"newRoot\":\"$weapons\"}}])\n",
+                        "query": "marathon-game-data.marathon-game-data.aggregate([\n  {\n    '$match': {\n      'scenario name': '${game}',\n      'level index': '${levelIndex}',\n    }\n  },\n  {\n    '$group': {\n      _id: null,\n      pistolFired: {\n        '$sum': {\n          '$toInt': {\n            '$ifNull': [\n              '$pistol bullets fired',\n              0\n            ]\n          }\n        }\n      },\n      pistolHits: {\n        '$sum': {\n          '$toInt': {\n            '$ifNull': [\n              '$pistol bullets hit',\n              0\n            ]\n          }\n        }\n      },\n      rifleFired: {\n        '$sum': {\n          '$toInt': {\n            '$ifNull': [\n              '$rifle bullets fired',\n              0\n            ]\n          }\n        }\n      },\n      rifleHits: {\n        '$sum': {\n          '$toInt': {\n            '$ifNull': [\n              '$rifle bullets hit',\n              0\n            ]\n          }\n        }\n      },\n      grenade_launcherFired: {\n        '$sum': {\n          '$toInt': {\n            '$ifNull': [\n              '$grenades fired',\n              0\n            ]\n          }\n        }\n      },\n      grenade_launcherHits: {\n        '$sum': {\n          '$toInt': {\n            '$ifNull': [\n              '$grenades hit',\n              0\n            ]\n          }\n        }\n      }\n    }\n  },\n  {\n    '$project': {\n      _id: 0,\n      weapons: [\n        {\n          name: 'Pistol',\n          image: 'https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/weapons/pistol-m1.png',\n          fired: '$pistolFired',\n          hits: '$pistolHits',\n          accuracy: {\n            '$cond': [\n              {\n                '$eq': [\n                  '$pistolFired',\n                  0\n                ]\n              },\n              0,\n              {\n                '$divide': [\n                  '$pistolHits',\n                  '$pistolFired'\n                ]\n              }\n            ]\n          }\n        },\n        {\n          name: 'Rifle',\n          image: 'https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/weapons/rifle-m1.png',\n          fired: '$rifleFired',\n          hits: '$rifleHits',\n          accuracy: {\n            '$cond': [\n              {\n                '$eq': [\n                  '$rifleFired',\n                  0\n                ]\n              },\n              0,\n              {\n                '$divide': [\n                  '$rifleHits',\n                  '$rifleFired'\n                ]\n              }\n            ]\n          }\n        },\n        {\n          name: 'Grenade launcher',\n          image: 'https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/weapons/rifle-m1.png',\n          fired: '$grenade_launcherFired',\n          hits: '$grenade_launcherHits',\n          accuracy: {\n            '$cond': [\n              {\n                '$eq': [\n                  '$grenade_launcherFired',\n                  0\n                ]\n              },\n              0,\n              {\n                '$divide': [\n                  '$grenade_launcherHits',\n                  '$grenade_launcherFired'\n                ]\n              }\n            ]\n          }\n        }\n      ]\n    }\n  },\n  {\n    '$unwind': '$weapons'\n  },\n  {\n    '$replaceRoot': {\n      newRoot: '$weapons'\n    }\n  }\n])\n",
+                        "queryType": "query"
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "A"
+                  }
+                }
+              ],
+              "queryOptions": {},
+              "transformations": [
+                {
+                  "kind": "organize",
+                  "spec": {
+                    "id": "organize",
+                    "options": {
+                      "excludeByName": {},
+                      "includeByName": {},
+                      "indexByName": {
+                        "accuracy": 4,
+                        "fired": 2,
+                        "hits": 3,
+                        "image": 0,
+                        "name": 1
+                      },
+                      "renameByName": {
+                        "accuracy": "Accuracy",
+                        "fired": "Fired",
+                        "hits": "Hits",
+                        "image": " ",
+                        "name": "  "
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "description": "",
+          "id": 1,
+          "links": [],
+          "title": "",
+          "vizConfig": {
+            "group": "table",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {
+                  "color": {
+                    "mode": "thresholds"
+                  },
+                  "custom": {
+                    "align": "auto",
+                    "cellOptions": {
+                      "type": "auto"
+                    },
+                    "footer": {
+                      "reducers": []
+                    },
+                    "inspect": false
+                  },
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": 0
+                      },
+                      {
+                        "color": "red",
+                        "value": 80
+                      }
+                    ]
+                  }
+                },
+                "overrides": [
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "Accuracy"
+                    },
+                    "properties": [
+                      {
+                        "id": "custom.cellOptions",
+                        "value": {
+                          "mode": "lcd",
+                          "type": "gauge"
+                        }
+                      },
+                      {
+                        "id": "min",
+                        "value": 0
+                      },
+                      {
+                        "id": "max",
+                        "value": 1
+                      },
+                      {
+                        "id": "unit",
+                        "value": "percentunit"
+                      },
+                      {
+                        "id": "color",
+                        "value": {
+                          "mode": "continuous-RdYlGr"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": " "
+                    },
+                    "properties": [
+                      {
+                        "id": "custom.cellOptions",
+                        "value": {
+                          "type": "image"
+                        }
+                      },
+                      {
+                        "id": "custom.width",
+                        "value": 89
+                      }
+                    ]
+                  }
+                ]
+              },
+              "options": {
+                "cellHeight": "sm",
+                "showHeader": true,
+                "sortBy": []
+              }
+            },
+            "version": "12.4.0-21710221776"
+          }
+        }
+      }
+    },
     "layout": {
-      "kind": "GridLayout",
+      "kind": "AutoGridLayout",
       "spec": {
-        "items": []
+        "columnWidthMode": "standard",
+        "items": [
+          {
+            "kind": "AutoGridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-1"
+              }
+            }
+          }
+        ],
+        "maxColumnCount": 3,
+        "rowHeightMode": "standard"
       }
     },
     "links": [
