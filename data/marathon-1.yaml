@@ -3,9 +3,6 @@ name: Marathon 1
 releaseDate: 1994
 logo: http://...
 weapons:
-  - name: fist
-    firedMetric: null
-    hitMetric: null
   - name: Pistol
     firedMetric: pistol bullets fired
     hitMetric: pistol bullets hit
@@ -14,10 +11,14 @@ weapons:
     firedMetric: rifle bullets fired
     hitMetric: rifle bullets hit
     image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/weapons/rifle-m1.png
-  - name: Grenade launcher
+  - name: Grenade Launcher
     firedMetric: grenades fired
     hitMetric: grenades hit
     image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/weapons/rifle-m1.png
+  - name: Flame Thrower
+    firedMetric: flamethrower bursts fired
+    hitMetric: flamethrower bursts hit
+    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/weapons/flame-m1.png
 monsters:
   - name: minor fighter
     image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/fighter-minor.png
@@ -33,6 +34,10 @@ monsters:
     image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/spht-minor-m1.png
     killsMetric: minor compiler kills
     punchKillsMetric: minor compiler punch kills
+  - name: minor invisible compiler
+    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/spht-minor-m1.png
+    killsMetric: minor invisible compiler kills
+    punchKillsMetric: minor invisible compiler punch kills
   - name: major fighter
     image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/fighter-major.png
     killsMetric: major fighter kills

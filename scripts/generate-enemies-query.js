@@ -35,14 +35,12 @@ try {
 }
 
 const monsters = Array.isArray(gameData.monsters) ? gameData.monsters : [];
-const minorFighters = monsters.filter(
-	(monster) =>
-		typeof monster.name === 'string' &&
-		monster.name.trim().toLowerCase() === 'minor fighter'
+const monstersWithKills = monsters.filter(
+	(monster) => monster && typeof monster.killsMetric === 'string'
 );
 
-if (minorFighters.length === 0) {
-	console.error('No minor fighter entry found in monsters list.');
+if (monstersWithKills.length === 0) {
+	console.error('No monsters with killsMetric found in monsters list.');
 	process.exit(1);
 }
 
@@ -61,12 +59,7 @@ const matchStage = {
 const groupStage = { $group: { _id: null } };
 const monsterDocs = [];
 
-minorFighters.forEach((monster) => {
-	if (!monster.killsMetric) {
-		console.error('Minor fighter entry missing killsMetric.');
-		process.exit(1);
-	}
-
+monstersWithKills.forEach((monster) => {
 	const slug = slugify(monster.name || 'monster');
 	const killsField = `${slug}Kills`;
 	groupStage.$group[killsField] = {
