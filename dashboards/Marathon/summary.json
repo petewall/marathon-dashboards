@@ -190,7 +190,7 @@
                 "showHeader": true
               }
             },
-            "version": "12.4.0-21710221776"
+            "version": "12.4.0-21757776788"
           }
         }
       },
@@ -248,7 +248,174 @@
                 ]
               }
             },
-            "version": "12.4.0-21710221776"
+            "version": "12.4.0-21757776788"
+          }
+        }
+      },
+      "panel-4": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "datasource": {
+                        "name": "ffbxubp3owa9sc"
+                      },
+                      "group": "grafana-mongodb-datasource",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "expand": true,
+                        "parsedQuery": "marathon-game-data.marathon-game-data.aggregate([{\"$match\":{\"scenario name\":\"Marathon\"}},{\"$group\":{\"_id\":null,\"fighterKills\":{\"$sum\":{\"$toInt\":{\"$ifNull\":[\"$minor fighter kills\",0]}}},\"fighterPunchKills\":{\"$sum\":{\"$toInt\":{\"$ifNull\":[\"$minor fighter punch kills\",0]}}},\"fighterSpared\":{\"$sum\":{\"$toInt\":{\"$ifNull\":[\"$minor fighters spared\",0]}}},\"major_fighterKills\":{\"$sum\":{\"$toInt\":{\"$ifNull\":[\"$major fighter kills\",0]}}},\"projectile_fighterKills\":{\"$sum\":{\"$toInt\":{\"$ifNull\":[\"$minor projectile fighter kills\",0]}}},\"projectile_fighterPunchKills\":{\"$sum\":{\"$toInt\":{\"$ifNull\":[\"$minor projectile fighter punch kills\",0]}}},\"projectile_fighterSpared\":{\"$sum\":{\"$toInt\":{\"$ifNull\":[\"$minor projectile fighters spared\",0]}}},\"major_projectile_fighterKills\":{\"$sum\":{\"$toInt\":{\"$ifNull\":[\"$major projectile fighter kills\",0]}}},\"trooperKills\":{\"$sum\":{\"$toInt\":{\"$ifNull\":[\"$minor trooper kills\",0]}}},\"major_trooperKills\":{\"$sum\":{\"$toInt\":{\"$ifNull\":[\"$minor trooper kills\",0]}}},\"compilerKills\":{\"$sum\":{\"$toInt\":{\"$ifNull\":[\"$minor compiler kills\",0]}}},\"compilerPunchKills\":{\"$sum\":{\"$toInt\":{\"$ifNull\":[\"$minor compiler punch kills\",0]}}},\"invisible_compilerKills\":{\"$sum\":{\"$toInt\":{\"$ifNull\":[\"$minor invisible compiler kills\",0]}}},\"invisible_compilerPunchKills\":{\"$sum\":{\"$toInt\":{\"$ifNull\":[\"$minor invisible compiler punch kills\",0]}}},\"major_compilerKills\":{\"$sum\":{\"$toInt\":{\"$ifNull\":[\"$major compiler kills\",0]}}},\"major_compilerPunchKills\":{\"$sum\":{\"$toInt\":{\"$ifNull\":[\"$major compiler punch kills\",0]}}},\"major_invisible_compilerKills\":{\"$sum\":{\"$toInt\":{\"$ifNull\":[\"$major invisible compiler kills\",0]}}},\"major_invisible_compilerPunchKills\":{\"$sum\":{\"$toInt\":{\"$ifNull\":[\"$major invisible compiler punch kills\",0]}}},\"hulkKills\":{\"$sum\":{\"$toInt\":{\"$ifNull\":[\"$minor hulk kills\",0]}}},\"waspKills\":{\"$sum\":{\"$toInt\":{\"$ifNull\":[\"$minor wasp kills\",0]}}},\"waspPunchKills\":{\"$sum\":{\"$toInt\":{\"$ifNull\":[\"$minor wasp punch kills\",0]}}},\"crew_bobKills\":{\"$sum\":{\"$toInt\":{\"$ifNull\":[\"$crew bob kills\",0]}}}}},{\"$project\":{\"_id\":0,\"monsters\":[{\"name\":\"Fighter\",\"image\":\"https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/fighter-minor.png\",\"kills\":\"$fighterKills\",\"punchKills\":\"$fighterPunchKills\",\"spared\":\"$fighterSpared\"},{\"name\":\"Major Fighter\",\"image\":\"https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/fighter-major.png\",\"kills\":\"$major_fighterKills\"},{\"name\":\"Projectile Fighter\",\"image\":\"https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/fighter-projectile-minor.png\",\"kills\":\"$projectile_fighterKills\",\"punchKills\":\"$projectile_fighterPunchKills\",\"spared\":\"$projectile_fighterSpared\"},{\"name\":\"Major Projectile Fighter\",\"image\":\"https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/fighter-projectile-major.png\",\"kills\":\"$major_projectile_fighterKills\"},{\"name\":\"Trooper\",\"image\":\"https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/trooper-minor.png\",\"kills\":\"$trooperKills\"},{\"name\":\"Major Trooper\",\"image\":\"https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/trooper-major.png\",\"kills\":\"$major_trooperKills\"},{\"name\":\"Compiler\",\"image\":\"https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/spht-minor-m1.png\",\"kills\":\"$compilerKills\",\"punchKills\":\"$compilerPunchKills\"},{\"name\":\"Invisible Compiler\",\"image\":\"https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/spht-minor-m1.png\",\"kills\":\"$invisible_compilerKills\",\"punchKills\":\"$invisible_compilerPunchKills\"},{\"name\":\"Major Compiler\",\"image\":\"https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/spht-minor-m1.png\",\"kills\":\"$major_compilerKills\",\"punchKills\":\"$major_compilerPunchKills\"},{\"name\":\"Major Invisible Compiler\",\"image\":\"https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/spht-minor-m1.png\",\"kills\":\"$major_invisible_compilerKills\",\"punchKills\":\"$major_invisible_compilerPunchKills\"},{\"name\":\"Hulk\",\"image\":\"https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/hulk.png\",\"kills\":\"$hulkKills\"},{\"name\":\"Wasp\",\"image\":\"https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/wasp-m1.png\",\"kills\":\"$waspKills\",\"punchKills\":\"$waspPunchKills\"},{\"name\":\"crew bob\",\"image\":\"http://...\",\"kills\":\"$crew_bobKills\"}]}},{\"$unwind\":\"$monsters\"},{\"$replaceRoot\":{\"newRoot\":\"$monsters\"}}])\n",
+                        "query": "marathon-game-data.marathon-game-data.aggregate([\n  {\n    '$match': {\n      'scenario name': '${game}'\n    }\n  },\n  {\n    '$group': {\n      _id: null,\n      fighterKills: {\n        '$sum': {\n          '$toInt': {\n            '$ifNull': [\n              '$minor fighter kills',\n              0\n            ]\n          }\n        }\n      },\n      fighterPunchKills: {\n        '$sum': {\n          '$toInt': {\n            '$ifNull': [\n              '$minor fighter punch kills',\n              0\n            ]\n          }\n        }\n      },\n      fighterSpared: {\n        '$sum': {\n          '$toInt': {\n            '$ifNull': [\n              '$minor fighters spared',\n              0\n            ]\n          }\n        }\n      },\n      major_fighterKills: {\n        '$sum': {\n          '$toInt': {\n            '$ifNull': [\n              '$major fighter kills',\n              0\n            ]\n          }\n        }\n      },\n      projectile_fighterKills: {\n        '$sum': {\n          '$toInt': {\n            '$ifNull': [\n              '$minor projectile fighter kills',\n              0\n            ]\n          }\n        }\n      },\n      projectile_fighterPunchKills: {\n        '$sum': {\n          '$toInt': {\n            '$ifNull': [\n              '$minor projectile fighter punch kills',\n              0\n            ]\n          }\n        }\n      },\n      projectile_fighterSpared: {\n        '$sum': {\n          '$toInt': {\n            '$ifNull': [\n              '$minor projectile fighters spared',\n              0\n            ]\n          }\n        }\n      },\n      major_projectile_fighterKills: {\n        '$sum': {\n          '$toInt': {\n            '$ifNull': [\n              '$major projectile fighter kills',\n              0\n            ]\n          }\n        }\n      },\n      trooperKills: {\n        '$sum': {\n          '$toInt': {\n            '$ifNull': [\n              '$minor trooper kills',\n              0\n            ]\n          }\n        }\n      },\n      major_trooperKills: {\n        '$sum': {\n          '$toInt': {\n            '$ifNull': [\n              '$minor trooper kills',\n              0\n            ]\n          }\n        }\n      },\n      compilerKills: {\n        '$sum': {\n          '$toInt': {\n            '$ifNull': [\n              '$minor compiler kills',\n              0\n            ]\n          }\n        }\n      },\n      compilerPunchKills: {\n        '$sum': {\n          '$toInt': {\n            '$ifNull': [\n              '$minor compiler punch kills',\n              0\n            ]\n          }\n        }\n      },\n      invisible_compilerKills: {\n        '$sum': {\n          '$toInt': {\n            '$ifNull': [\n              '$minor invisible compiler kills',\n              0\n            ]\n          }\n        }\n      },\n      invisible_compilerPunchKills: {\n        '$sum': {\n          '$toInt': {\n            '$ifNull': [\n              '$minor invisible compiler punch kills',\n              0\n            ]\n          }\n        }\n      },\n      major_compilerKills: {\n        '$sum': {\n          '$toInt': {\n            '$ifNull': [\n              '$major compiler kills',\n              0\n            ]\n          }\n        }\n      },\n      major_compilerPunchKills: {\n        '$sum': {\n          '$toInt': {\n            '$ifNull': [\n              '$major compiler punch kills',\n              0\n            ]\n          }\n        }\n      },\n      major_invisible_compilerKills: {\n        '$sum': {\n          '$toInt': {\n            '$ifNull': [\n              '$major invisible compiler kills',\n              0\n            ]\n          }\n        }\n      },\n      major_invisible_compilerPunchKills: {\n        '$sum': {\n          '$toInt': {\n            '$ifNull': [\n              '$major invisible compiler punch kills',\n              0\n            ]\n          }\n        }\n      },\n      hulkKills: {\n        '$sum': {\n          '$toInt': {\n            '$ifNull': [\n              '$minor hulk kills',\n              0\n            ]\n          }\n        }\n      },\n      waspKills: {\n        '$sum': {\n          '$toInt': {\n            '$ifNull': [\n              '$minor wasp kills',\n              0\n            ]\n          }\n        }\n      },\n      waspPunchKills: {\n        '$sum': {\n          '$toInt': {\n            '$ifNull': [\n              '$minor wasp punch kills',\n              0\n            ]\n          }\n        }\n      },\n      crew_bobKills: {\n        '$sum': {\n          '$toInt': {\n            '$ifNull': [\n              '$crew bob kills',\n              0\n            ]\n          }\n        }\n      }\n    }\n  },\n  {\n    '$project': {\n      _id: 0,\n      monsters: [\n        {\n          name: 'Fighter',\n          image: 'https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/fighter-minor.png',\n          kills: '$fighterKills',\n          punchKills: '$fighterPunchKills',\n          spared: '$fighterSpared'\n        },\n        {\n          name: 'Major Fighter',\n          image: 'https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/fighter-major.png',\n          kills: '$major_fighterKills'\n        },\n        {\n          name: 'Projectile Fighter',\n          image: 'https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/fighter-projectile-minor.png',\n          kills: '$projectile_fighterKills',\n          punchKills: '$projectile_fighterPunchKills',\n          spared: '$projectile_fighterSpared'\n        },\n        {\n          name: 'Major Projectile Fighter',\n          image: 'https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/fighter-projectile-major.png',\n          kills: '$major_projectile_fighterKills'\n        },\n        {\n          name: 'Trooper',\n          image: 'https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/trooper-minor.png',\n          kills: '$trooperKills'\n        },\n        {\n          name: 'Major Trooper',\n          image: 'https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/trooper-major.png',\n          kills: '$major_trooperKills'\n        },\n        {\n          name: 'Compiler',\n          image: 'https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/spht-minor-m1.png',\n          kills: '$compilerKills',\n          punchKills: '$compilerPunchKills'\n        },\n        {\n          name: 'Invisible Compiler',\n          image: 'https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/spht-minor-m1.png',\n          kills: '$invisible_compilerKills',\n          punchKills: '$invisible_compilerPunchKills'\n        },\n        {\n          name: 'Major Compiler',\n          image: 'https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/spht-minor-m1.png',\n          kills: '$major_compilerKills',\n          punchKills: '$major_compilerPunchKills'\n        },\n        {\n          name: 'Major Invisible Compiler',\n          image: 'https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/spht-minor-m1.png',\n          kills: '$major_invisible_compilerKills',\n          punchKills: '$major_invisible_compilerPunchKills'\n        },\n        {\n          name: 'Hulk',\n          image: 'https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/hulk.png',\n          kills: '$hulkKills'\n        },\n        {\n          name: 'Wasp',\n          image: 'https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/wasp-m1.png',\n          kills: '$waspKills',\n          punchKills: '$waspPunchKills'\n        },\n        {\n          name: 'crew bob',\n          image: 'http://...',\n          kills: '$crew_bobKills'\n        }\n      ]\n    }\n  },\n  {\n    '$unwind': '$monsters'\n  },\n  {\n    '$replaceRoot': {\n      newRoot: '$monsters'\n    }\n  }\n])\n",
+                        "queryType": "query"
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "A"
+                  }
+                }
+              ],
+              "queryOptions": {},
+              "transformations": [
+                {
+                  "kind": "organize",
+                  "spec": {
+                    "id": "organize",
+                    "options": {
+                      "excludeByName": {
+                        "_id": true
+                      },
+                      "includeByName": {},
+                      "indexByName": {
+                        "accuracy": 4,
+                        "fired": 2,
+                        "hits": 3,
+                        "image": 0,
+                        "name": 1
+                      },
+                      "renameByName": {
+                        "accuracy": "Accuracy",
+                        "fired": "Fired",
+                        "hits": "Hits",
+                        "image": " ",
+                        "kills": "Kills",
+                        "name": "  ",
+                        "punchKills": "Punch Kills",
+                        "spared": "Spared"
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "description": "",
+          "id": 4,
+          "links": [],
+          "title": "",
+          "vizConfig": {
+            "group": "table",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {
+                  "color": {
+                    "mode": "continuous-RdYlGr"
+                  },
+                  "custom": {
+                    "align": "auto",
+                    "cellOptions": {
+                      "type": "auto"
+                    },
+                    "filterable": false,
+                    "footer": {
+                      "reducers": []
+                    },
+                    "inspect": false,
+                    "wrapHeaderText": false,
+                    "wrapText": false
+                  },
+                  "max": 1,
+                  "min": 0,
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": 0
+                      },
+                      {
+                        "color": "red",
+                        "value": 80
+                      }
+                    ]
+                  }
+                },
+                "overrides": [
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "Accuracy"
+                    },
+                    "properties": [
+                      {
+                        "id": "unit",
+                        "value": "percentunit"
+                      },
+                      {
+                        "id": "custom.cellOptions",
+                        "value": {
+                          "mode": "lcd",
+                          "type": "gauge",
+                          "valueDisplayMode": "text"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": " "
+                    },
+                    "properties": [
+                      {
+                        "id": "custom.cellOptions",
+                        "value": {
+                          "type": "image"
+                        }
+                      },
+                      {
+                        "id": "custom.width",
+                        "value": 65
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "  "
+                    },
+                    "properties": [
+                      {
+                        "id": "custom.width",
+                        "value": 155
+                      }
+                    ]
+                  }
+                ]
+              },
+              "options": {
+                "cellHeight": "sm",
+                "showHeader": true
+              }
+            },
+            "version": "12.4.0-21757776788"
           }
         }
       }
@@ -267,6 +434,19 @@
               "height": 10,
               "width": 12,
               "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-4"
+              },
+              "height": 10,
+              "width": 12,
+              "x": 12,
               "y": 0
             }
           },
