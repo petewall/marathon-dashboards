@@ -33,7 +33,7 @@ monsters:
     killsMetric: minor fighter kills
     punchKillsMetric: minor fighter punch kills
     sparedMetric: minor fighters spared
-  - name: Fighter, major
+  - name: Major Fighter
     image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/fighter-major.png
     killsMetric: major fighter kills
   - name: Projectile Fighter
@@ -41,7 +41,7 @@ monsters:
     killsMetric: minor projectile fighter kills
     punchKillsMetric: minor projectile fighter punch kills
     sparedMetric: minor projectile fighters spared
-  - name: Projectile Fighter, major
+  - name: Major Projectile Fighter
     image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/fighter-projectile-major.png
     killsMetric: major projectile fighter kills
   - name: Trooper

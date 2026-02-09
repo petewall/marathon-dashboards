@@ -44,7 +44,12 @@ if (weaponsWithMetrics.length === 0) {
 	process.exit(1);
 }
 
-const matchStage = { $match: { 'scenario name': '${game}' } };
+const matchStage = {
+	$match: {
+		'scenario name': '${game}',
+		'level index': '${levelIndex}'
+	}
+};
 const groupStage = { $group: { _id: null } };
 const weaponDocs = [];
 
