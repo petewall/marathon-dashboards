@@ -457,8 +457,8 @@
                 "kind": "ElementReference",
                 "name": "panel-3"
               },
-              "height": 10,
-              "width": 8,
+              "height": 9,
+              "width": 24,
               "x": 0,
               "y": 10
             }
