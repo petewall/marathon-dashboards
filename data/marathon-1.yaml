@@ -66,6 +66,14 @@ monsters:
     image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/spht-minor-m1.png
     killsMetric: major invisible compiler kills
     punchKillsMetric: major invisible compiler punch kills
+  - name: Hunter
+    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/hunter-minor-m2.png
+    killsMetric: minor hunter kills
+    punchKillsMetric: minor hunter punch kills
+    sparedMetric: minor hunter spared
+  - name: Major Hunter
+    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/hunter-major-m2.png
+    killsMetric: major hunter kills
   - name: Hulk
     image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/hulk.png
     killsMetric: minor hulk kills
