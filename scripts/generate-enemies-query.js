@@ -35,12 +35,15 @@ try {
 }
 
 const monsters = Array.isArray(gameData.monsters) ? gameData.monsters : [];
-const monstersWithKills = monsters.filter(
-	(monster) => monster && typeof monster.killsMetric === 'string'
+const monstersWithPrefixes = monsters.filter(
+	(monster) =>
+		monster &&
+		typeof monster.metricPrefix === 'string' &&
+		monster.metricPrefix.trim().length > 0
 );
 
-if (monstersWithKills.length === 0) {
-	console.error('No monsters with killsMetric found in monsters list.');
+if (monstersWithPrefixes.length === 0) {
+	console.error('No monsters with metricPrefix entries found in monsters list.');
 	process.exit(1);
 }
 
@@ -59,39 +62,43 @@ const matchStage = {
 const groupStage = { $group: { _id: null } };
 const monsterDocs = [];
 
-monstersWithKills.forEach((monster) => {
+const buildMetricNames = (prefix) => {
+	const trimmed = prefix.trim();
+	return {
+		kills: `${trimmed} kills`,
+		punchKills: `${trimmed} punch kills`,
+		spared: trimmed.endsWith('s')
+			? `${trimmed} spared`
+			: `${trimmed}s spared`
+	};
+};
+
+monstersWithPrefixes.forEach((monster) => {
 	const slug = slugify(monster.name || 'monster');
-	const killsField = `${slug}Kills`;
+	const metricNames = buildMetricNames(monster.metricPrefix);
+	
+	const killsField = `${slug} kills`;
 	groupStage.$group[killsField] = {
-		$sum: { $toInt: { $ifNull: [`$${monster.killsMetric}`, 0] } }
+		$sum: { $toInt: { $ifNull: [`$${metricNames.kills}`, 0] } }
 	};
 
-	let punchField;
-	let sparedField;
-	if (monster.punchKillsMetric) {
-		punchField = `${slug}PunchKills`;
-		groupStage.$group[punchField] = {
-			$sum: { $toInt: { $ifNull: [`$${monster.punchKillsMetric}`, 0] } }
-		};
-	}
-	if (monster.sparedMetric) {
-		sparedField = `${slug}Spared`;
-		groupStage.$group[sparedField] = {
-			$sum: { $toInt: { $ifNull: [`$${monster.sparedMetric}`, 0] } }
-		};
-	}
+	const punchField = `${slug} punch kills`;
+	groupStage.$group[punchField] = {
+		$sum: { $toInt: { $ifNull: [`$${metricNames.punchKills}`, 0] } }
+	};
+
+	const sparedField = `${slug}s spared`;
+	groupStage.$group[sparedField] = {
+		$sum: { $toInt: { $ifNull: [`$${metricNames.spared}`, 0] } }
+	};
 
 	const monsterDoc = {
 		name: monster.name || '',
 		image: monster.image || '',
-		kills: `$${killsField}`
+		kills: `$${killsField}`,
+		punchKills: `$${punchField}`,
+		spared: `$${sparedField}`
 	};
-	if (punchField) {
-		monsterDoc.punchKills = `$${punchField}`;
-	}
-	if (sparedField) {
-		monsterDoc.spared = `$${sparedField}`;
-	}
 	monsterDocs.push(monsterDoc);
 });
 

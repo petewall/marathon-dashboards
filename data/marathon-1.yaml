@@ -30,63 +30,52 @@ weapons:
 monsters:
   - name: Fighter
     image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/fighter-minor.png
-    killsMetric: minor fighter kills
-    punchKillsMetric: minor fighter punch kills
-    sparedMetric: minor fighters spared
+    metricPrefix: minor fighter
   - name: Major Fighter
     image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/fighter-major.png
-    killsMetric: major fighter kills
+    metricPrefix: major fighter
   - name: Projectile Fighter
     image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/fighter-projectile-minor.png
-    killsMetric: minor projectile fighter kills
-    punchKillsMetric: minor projectile fighter punch kills
-    sparedMetric: minor projectile fighters spared
+    metricPrefix: minor projectile fighter
   - name: Major Projectile Fighter
     image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/fighter-projectile-major.png
-    killsMetric: major projectile fighter kills
+    metricPrefix: major projectile fighter
   - name: Trooper
     image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/trooper-minor.png
-    killsMetric: minor trooper kills
+    metricPrefix: minor trooper
   - name: Major Trooper
     image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/trooper-major.png
-    killsMetric: minor trooper kills
+    metricPrefix: major trooper
   - name: Compiler
     image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/spht-minor-m1.png
-    killsMetric: minor compiler kills
-    punchKillsMetric: minor compiler punch kills
+    metricPrefix: minor compiler
   - name: Invisible Compiler
     image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/spht-minor-m1.png
-    killsMetric: minor invisible compiler kills
-    punchKillsMetric: minor invisible compiler punch kills
+    metricPrefix: minor invisible compiler
   - name: Major Compiler
     image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/spht-minor-m1.png
-    killsMetric: major compiler kills
-    punchKillsMetric: major compiler punch kills
+    metricPrefix: major compiler
   - name: Major Invisible Compiler
     image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/spht-minor-m1.png
-    killsMetric: major invisible compiler kills
-    punchKillsMetric: major invisible compiler punch kills
+    metricPrefix: major invisible compiler
   - name: Hunter
     image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/hunter-minor-m2.png
-    killsMetric: minor hunter kills
-    punchKillsMetric: minor hunter punch kills
-    sparedMetric: minor hunter spared
+    metricPrefix: minor hunter
   - name: Major Hunter
     image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/hunter-major-m2.png
-    killsMetric: major hunter kills
+    metricPrefix: major hunter
   - name: Hulk
     image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/hulk.png
-    killsMetric: minor hulk kills
+    metricPrefix: minor hulk
   - name: Wasp
     image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/wasp-m1.png
-    killsMetric: minor wasp kills
-    punchKillsMetric: minor wasp punch kills
+    metricPrefix: minor wasp
   - name: crew bob
     image: http://...
-    killsMetric: crew bob kills
+    metricPrefix: crew bob
   - name: madd
     image: http://...
-    sparedMetric: madds spared
+    metricPrefix: madd
 levels:
   - name: Arrival
     mapUrl: https://www.lhowon.org/levels/marathon/standard/0.png
