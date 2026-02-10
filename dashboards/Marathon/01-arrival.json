@@ -318,7 +318,49 @@
               "options": {
                 "cellHeight": "sm",
                 "showHeader": true,
-                "sortBy": []
+                "sortBy": [
+                  {
+                    "desc": false,
+                    "displayName": "  "
+                  }
+                ]
+              }
+            },
+            "version": "12.4.0-21855751166"
+          }
+        }
+      },
+      "panel-3": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [],
+              "queryOptions": {},
+              "transformations": []
+            }
+          },
+          "description": "",
+          "id": 3,
+          "links": [],
+          "title": "",
+          "vizConfig": {
+            "group": "text",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {},
+                "overrides": []
+              },
+              "options": {
+                "code": {
+                  "language": "plaintext",
+                  "showLineNumbers": false,
+                  "showMiniMap": false
+                },
+                "content": "\u003cimg src=\"https://www.lhowon.org/levels/marathon/standard/${levelIndex}.png\" /\u003e",
+                "mode": "html"
               }
             },
             "version": "12.4.0-21855751166"
@@ -327,31 +369,49 @@
       }
     },
     "layout": {
-      "kind": "AutoGridLayout",
+      "kind": "GridLayout",
       "spec": {
-        "columnWidthMode": "standard",
         "items": [
           {
-            "kind": "AutoGridLayoutItem",
+            "kind": "GridLayoutItem",
             "spec": {
               "element": {
                 "kind": "ElementReference",
                 "name": "panel-1"
-              }
+              },
+              "height": 10,
+              "width": 8,
+              "x": 0,
+              "y": 0
             }
           },
           {
-            "kind": "AutoGridLayoutItem",
+            "kind": "GridLayoutItem",
             "spec": {
               "element": {
                 "kind": "ElementReference",
                 "name": "panel-2"
-              }
+              },
+              "height": 10,
+              "width": 8,
+              "x": 8,
+              "y": 0
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-3"
+              },
+              "height": 10,
+              "width": 8,
+              "x": 16,
+              "y": 0
             }
           }
-        ],
-        "maxColumnCount": 3,
-        "rowHeightMode": "standard"
+        ]
       }
     },
     "links": [
