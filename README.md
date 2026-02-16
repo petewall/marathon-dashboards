@@ -54,7 +54,6 @@ This dashboard shows the stats from an individual game
   * Name
   * Kills
   * Killed by punch
-  * Deaths to that monster
 
 ### Level Dashboard
 
@@ -79,7 +78,6 @@ This dashboard shows the stats from a level in a game
   * Name
   * Kills
   * Killed by punch
-  * Deaths to that monster
 
 ## Data source
 
