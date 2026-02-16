@@ -220,7 +220,7 @@
                 "sortBy": []
               }
             },
-            "version": "12.4.0-21945166758"
+            "version": "12.4.0-21966731219"
           }
         }
       },
@@ -357,7 +357,7 @@
                 "sortBy": []
               }
             },
-            "version": "12.4.0-21945166758"
+            "version": "12.4.0-21966731219"
           }
         }
       },
@@ -408,7 +408,7 @@
                 "mode": "html"
               }
             },
-            "version": "12.4.0-21945166758"
+            "version": "12.4.0-21966731219"
           }
         }
       }
@@ -541,7 +541,7 @@
           "description": "",
           "hide": "hideVariable",
           "label": "",
-          "name": "level",
+          "name": "levelName",
           "query": "Arrival",
           "skipUrlSync": true
         }
