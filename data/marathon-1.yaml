@@ -70,6 +70,15 @@ monsters:
   - name: Wasp
     image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/wasp-m1.png
     metricPrefix: minor wasp
+  - name: Major Wasp
+    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/wasp-m1.png
+    metricPrefix: major wasp
+  - name: Looker
+    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/looker-m1.png
+    metricPrefix: minor looker
+  - name: Major Looker
+    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/looker-m1.png
+    metricPrefix: minor looker
   - name: crew bob
     image: http://...
     metricPrefix: crew bob
