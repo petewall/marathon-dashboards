@@ -220,7 +220,7 @@
                 "sortBy": []
               }
             },
-            "version": "12.4.0-21945166758"
+            "version": "12.4.0-21966731219"
           }
         }
       },
@@ -357,37 +357,266 @@
                 "sortBy": []
               }
             },
-            "version": "12.4.0-21945166758"
+            "version": "12.4.0-21966731219"
+          }
+        }
+      },
+      "panel-3": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "group": "",
+                      "kind": "DataQuery",
+                      "spec": {},
+                      "version": "v0"
+                    },
+                    "refId": "A"
+                  }
+                }
+              ],
+              "queryOptions": {},
+              "transformations": []
+            }
+          },
+          "description": "",
+          "id": 3,
+          "links": [],
+          "title": "",
+          "vizConfig": {
+            "group": "text",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {},
+                "overrides": []
+              },
+              "options": {
+                "code": {
+                  "language": "plaintext",
+                  "showLineNumbers": false,
+                  "showMiniMap": false
+                },
+                "content": "<img src=\"https://www.lhowon.org/levels/marathon/standard/${levelIndex}.png\" />",
+                "mode": "html"
+              }
+            },
+            "version": "12.4.0-21966731219"
+          }
+        }
+      },
+      "panel-4": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [],
+              "queryOptions": {},
+              "transformations": []
+            }
+          },
+          "description": "",
+          "id": 4,
+          "links": [],
+          "title": "New panel",
+          "vizConfig": {
+            "group": "text",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {},
+                "overrides": []
+              },
+              "options": {
+                "code": {
+                  "language": "plaintext",
+                  "showLineNumbers": false,
+                  "showMiniMap": false
+                },
+                "content": "# ${levelName}",
+                "mode": "markdown"
+              }
+            },
+            "version": "12.4.0-21966731219"
+          }
+        }
+      },
+      "panel-5": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "datasource": {
+                        "name": "ffbxubp3owa9sc"
+                      },
+                      "group": "grafana-mongodb-datasource",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "parsedQuery": "marathon-game-data.marathon-game-data.aggregate([{\"$match\":{\"scenario name\":\"Marathon\",\"level index\":\"18\"}},{\"$group\":{\"_id\":null,\"completions\":{\"$sum\":{\"$toInt\":{\"$ifNull\":[\"$level completed\",0]}}},\"deaths\":{\"$sum\":{\"$toInt\":{\"$ifNull\":[\"$deaths\",0]}}},\"playtime\":{\"$sum\":{\"$subtract\":[{\"$toInt\":{\"$ifNull\":[\"$end tick\",0]}},{\"$toInt\":{\"$ifNull\":[\"$start tick\",0]}}]}}}},{\"$project\":{\"_id\":0,\"completions\":1,\"deaths\":1,\"playtime\":1}}])\n",
+                        "query": "marathon-game-data.marathon-game-data.aggregate([\n  {\n    $match: {\n      'scenario name': '${game}',\n      'level index': '${levelIndex}'\n    }\n  },\n  {\n    $group: {\n      _id: null,\n      completions: {\n        $sum: { $toInt: { $ifNull: ['$level completed', 0] } }\n      },\n      deaths: {\n        $sum: { $toInt: { $ifNull: ['$deaths', 0] } }\n      },\n      playtime: {\n        $sum: {\n          $subtract: [\n            { $toInt: { $ifNull: ['$end tick', 0] } },\n            { $toInt: { $ifNull: ['$start tick', 0] } }\n          ]\n        }\n      }\n    }\n  },\n  {\n    $project: {\n      _id: 0,\n      completions: 1,\n      deaths: 1,\n      playtime: 1\n    }\n  }\n])\n",
+                        "queryType": "query"
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "A"
+                  }
+                }
+              ],
+              "queryOptions": {},
+              "transformations": [
+                {
+                  "kind": "organize",
+                  "spec": {
+                    "id": "organize",
+                    "options": {
+                      "excludeByName": {},
+                      "includeByName": {},
+                      "indexByName": {},
+                      "renameByName": {
+                        "completions": "Finishes",
+                        "deaths": "Deaths",
+                        "playtime": "Playtime"
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "description": "",
+          "id": 5,
+          "links": [],
+          "title": "",
+          "vizConfig": {
+            "group": "table",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {
+                  "color": {
+                    "mode": "thresholds"
+                  },
+                  "custom": {
+                    "align": "auto",
+                    "cellOptions": {
+                      "type": "auto"
+                    },
+                    "footer": {
+                      "reducers": []
+                    },
+                    "inspect": false
+                  },
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": 0
+                      },
+                      {
+                        "color": "red",
+                        "value": 80
+                      }
+                    ]
+                  }
+                },
+                "overrides": []
+              },
+              "options": {
+                "cellHeight": "sm",
+                "showHeader": true
+              }
+            },
+            "version": "12.4.0-21966731219"
           }
         }
       }
     },
     "layout": {
-      "kind": "AutoGridLayout",
+      "kind": "GridLayout",
       "spec": {
-        "columnWidthMode": "standard",
         "items": [
           {
-            "kind": "AutoGridLayoutItem",
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-4"
+              },
+              "height": 3,
+              "width": 8,
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-5"
+              },
+              "height": 3,
+              "width": 8,
+              "x": 8,
+              "y": 0
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-3"
+              },
+              "height": 13,
+              "width": 8,
+              "x": 16,
+              "y": 0
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
             "spec": {
               "element": {
                 "kind": "ElementReference",
                 "name": "panel-1"
-              }
+              },
+              "height": 10,
+              "width": 8,
+              "x": 0,
+              "y": 3
             }
           },
           {
-            "kind": "AutoGridLayoutItem",
+            "kind": "GridLayoutItem",
             "spec": {
               "element": {
                 "kind": "ElementReference",
                 "name": "panel-2"
-              }
+              },
+              "height": 10,
+              "width": 8,
+              "x": 8,
+              "y": 3
             }
           }
-        ],
-        "maxColumnCount": 3,
-        "rowHeightMode": "standard"
+        ]
       }
     },
     "links": [

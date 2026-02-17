@@ -45,41 +45,75 @@ function clone(value) {
 
 const arrivalDashboard = readJson(arrivalDashboardPath);
 const elements = arrivalDashboard?.spec?.elements;
+const layoutToCopy = clone(arrivalDashboard?.spec?.layout);
 
-if (!elements || !elements['panel-1'] || !elements['panel-2']) {
-	console.error(
-		`${arrivalDashboardPath} is missing panel-1 or panel-2 in spec.elements.`
-	);
+if (!elements || Object.keys(elements).length === 0) {
+	console.error(`${arrivalDashboardPath} has no panels in spec.elements.`);
+	process.exit(1);
+}
+if (!layoutToCopy) {
+	console.error(`${arrivalDashboardPath} is missing spec.layout.`);
 	process.exit(1);
 }
 
-const panelsToCopy = {
-	'panel-1': clone(elements['panel-1']),
-	'panel-2': clone(elements['panel-2'])
-};
+const panelsToCopy = {};
+const panelsRequiringLevelIndex = new Set();
+for (const [panelName, panelSpec] of Object.entries(elements)) {
+	panelsToCopy[panelName] = clone(panelSpec);
+	if (panelHasLevelIndex(panelSpec)) {
+		panelsRequiringLevelIndex.add(panelName);
+	}
+}
+
+function panelHasLevelIndex(panel) {
+	const queries =
+		panel?.spec?.data?.spec?.queries && Array.isArray(panel.spec.data.spec.queries)
+			? panel.spec.data.spec.queries
+			: [];
+	for (const query of queries) {
+		const parsedQuery = query?.spec?.query?.spec?.parsedQuery;
+		if (typeof parsedQuery === 'string' && parsedQuery.includes('"level index"')) {
+			return true;
+		}
+	}
+	return false;
+}
 
 const levelFilePattern = /^(\d{2})-.*\.json$/;
 
 function updateLevelIndex(panel, levelIndex, filePath, panelName) {
-	const querySpec =
-		panel?.spec?.data?.spec?.queries?.[0]?.spec?.query?.spec ?? null;
-	if (!querySpec || typeof querySpec.parsedQuery !== 'string') {
-		throw new Error(
-			`Unable to find parsedQuery for ${panelName} in ${filePath}`
+	const levelIndexRegex = /"level index":"\d+"/g;
+	const queries =
+		panel?.spec?.data?.spec?.queries && Array.isArray(panel.spec.data.spec.queries)
+			? panel.spec.data.spec.queries
+			: [];
+	let updated = false;
+
+	for (const [idx, query] of queries.entries()) {
+		const querySpec = query?.spec?.query?.spec;
+		if (!querySpec || typeof querySpec.parsedQuery !== 'string') {
+			continue;
+		}
+
+		if (!levelIndexRegex.test(querySpec.parsedQuery)) {
+			// Reset lastIndex so the regex can be reused.
+			levelIndexRegex.lastIndex = 0;
+			continue;
+		}
+
+		levelIndexRegex.lastIndex = 0;
+		querySpec.parsedQuery = querySpec.parsedQuery.replace(
+			levelIndexRegex,
+			`"level index":"${levelIndex}"`
 		);
+		updated = true;
 	}
 
-	const regex = /"level index":"\d+"/;
-	if (!regex.test(querySpec.parsedQuery)) {
+	if (panelsRequiringLevelIndex.has(panelName) && !updated) {
 		throw new Error(
 			`parsedQuery missing "level index" for ${panelName} in ${filePath}`
 		);
 	}
-
-	querySpec.parsedQuery = querySpec.parsedQuery.replace(
-		regex,
-		`"level index":"${levelIndex}"`
-	);
 }
 
 function syncDashboard(fileName) {
@@ -104,6 +138,7 @@ function syncDashboard(fileName) {
 		spec.elements[panelName] = clone(panelsToCopy[panelName]);
 		updateLevelIndex(spec.elements[panelName], levelIndex, filePath, panelName);
 	}
+	spec.layout = clone(layoutToCopy);
 
 	writeJson(filePath, dashboard);
 	console.log(`Updated ${filePath}`);
