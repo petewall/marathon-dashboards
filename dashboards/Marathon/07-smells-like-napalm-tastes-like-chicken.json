@@ -701,7 +701,7 @@
           "description": "",
           "hide": "hideVariable",
           "label": "",
-          "name": "level",
+          "name": "levelName",
           "query": "Smells Like Napalm, Tastes Like Chicken!",
           "skipUrlSync": true
         }

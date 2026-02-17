@@ -701,7 +701,7 @@
           "description": "",
           "hide": "hideVariable",
           "label": "",
-          "name": "level",
+          "name": "levelName",
           "query": "You don't need to see my I.D.",
           "skipUrlSync": true
         }

@@ -701,7 +701,7 @@
           "description": "",
           "hide": "hideVariable",
           "label": "",
-          "name": "level",
+          "name": "levelName",
           "query": "Beware of Low-Flying Defense Drones...",
           "skipUrlSync": true
         }
