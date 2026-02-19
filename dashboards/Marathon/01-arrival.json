@@ -220,7 +220,7 @@
                 "sortBy": []
               }
             },
-            "version": "12.4.0-21966731219"
+            "version": "12.4.0-22066786794"
           }
         }
       },
@@ -357,7 +357,7 @@
                 "sortBy": []
               }
             },
-            "version": "12.4.0-21966731219"
+            "version": "12.4.0-22066786794"
           }
         }
       },
@@ -367,21 +367,7 @@
           "data": {
             "kind": "QueryGroup",
             "spec": {
-              "queries": [
-                {
-                  "kind": "PanelQuery",
-                  "spec": {
-                    "hidden": false,
-                    "query": {
-                      "group": "",
-                      "kind": "DataQuery",
-                      "spec": {},
-                      "version": "v0"
-                    },
-                    "refId": "A"
-                  }
-                }
-              ],
+              "queries": [],
               "queryOptions": {},
               "transformations": []
             }
@@ -408,7 +394,7 @@
                 "mode": "html"
               }
             },
-            "version": "12.4.0-21966731219"
+            "version": "12.4.0-22066786794"
           }
         }
       },
@@ -426,7 +412,7 @@
           "description": "",
           "id": 4,
           "links": [],
-          "title": "New panel",
+          "title": "",
           "vizConfig": {
             "group": "text",
             "kind": "VizConfig",
@@ -441,11 +427,11 @@
                   "showLineNumbers": false,
                   "showMiniMap": false
                 },
-                "content": "# ${levelName}",
-                "mode": "markdown"
+                "content": "\u003cbr\u003e\n\u003ch1\u003e${levelName}\u003c/h1\u003e",
+                "mode": "html"
               }
             },
-            "version": "12.4.0-21966731219"
+            "version": "12.4.0-22066786794"
           }
         }
       },
@@ -542,7 +528,7 @@
                 "showHeader": true
               }
             },
-            "version": "12.4.0-21966731219"
+            "version": "12.4.0-22066786794"
           }
         }
       }
