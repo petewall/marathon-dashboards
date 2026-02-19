@@ -427,7 +427,7 @@
                   "showLineNumbers": false,
                   "showMiniMap": false
                 },
-                "content": "\u003cbr\u003e\n\u003ch1\u003e${levelName}\u003c/h1\u003e",
+                "content": "\u003cbr\u003e\n\u003ch1\u003e${levelName}\u003c/h1\u003e\n",
                 "mode": "html"
               }
             },
@@ -531,6 +531,44 @@
             "version": "12.4.0-22066786794"
           }
         }
+      },
+      "panel-6": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [],
+              "queryOptions": {},
+              "transformations": []
+            }
+          },
+          "description": "",
+          "id": 6,
+          "links": [],
+          "title": "",
+          "transparent": true,
+          "vizConfig": {
+            "group": "text",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {},
+                "overrides": []
+              },
+              "options": {
+                "code": {
+                  "language": "plaintext",
+                  "showLineNumbers": false,
+                  "showMiniMap": false
+                },
+                "content": "\u003cimg src=\"https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/M1_Logo.png\" /\u003e",
+                "mode": "html"
+              }
+            },
+            "version": "12.4.0-22066786794"
+          }
+        }
       }
     },
     "layout": {
@@ -542,11 +580,24 @@
             "spec": {
               "element": {
                 "kind": "ElementReference",
+                "name": "panel-6"
+              },
+              "height": 4,
+              "width": 2,
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
                 "name": "panel-4"
               },
-              "height": 3,
-              "width": 8,
-              "x": 0,
+              "height": 4,
+              "width": 6,
+              "x": 2,
               "y": 0
             }
           },
@@ -557,7 +608,7 @@
                 "kind": "ElementReference",
                 "name": "panel-5"
               },
-              "height": 3,
+              "height": 4,
               "width": 8,
               "x": 8,
               "y": 0
@@ -570,7 +621,7 @@
                 "kind": "ElementReference",
                 "name": "panel-3"
               },
-              "height": 13,
+              "height": 21,
               "width": 8,
               "x": 16,
               "y": 0
@@ -583,10 +634,10 @@
                 "kind": "ElementReference",
                 "name": "panel-1"
               },
-              "height": 10,
+              "height": 17,
               "width": 8,
               "x": 0,
-              "y": 3
+              "y": 4
             }
           },
           {
@@ -596,10 +647,10 @@
                 "kind": "ElementReference",
                 "name": "panel-2"
               },
-              "height": 10,
+              "height": 17,
               "width": 8,
               "x": 8,
-              "y": 3
+              "y": 4
             }
           }
         ]
