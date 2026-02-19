@@ -220,7 +220,7 @@
                 "sortBy": []
               }
             },
-            "version": "12.4.0-21966731219"
+            "version": "12.4.0-22066786794"
           }
         }
       },
@@ -357,7 +357,7 @@
                 "sortBy": []
               }
             },
-            "version": "12.4.0-21966731219"
+            "version": "12.4.0-22066786794"
           }
         }
       },
@@ -367,21 +367,7 @@
           "data": {
             "kind": "QueryGroup",
             "spec": {
-              "queries": [
-                {
-                  "kind": "PanelQuery",
-                  "spec": {
-                    "hidden": false,
-                    "query": {
-                      "group": "",
-                      "kind": "DataQuery",
-                      "spec": {},
-                      "version": "v0"
-                    },
-                    "refId": "A"
-                  }
-                }
-              ],
+              "queries": [],
               "queryOptions": {},
               "transformations": []
             }
@@ -408,7 +394,7 @@
                 "mode": "html"
               }
             },
-            "version": "12.4.0-21966731219"
+            "version": "12.4.0-22066786794"
           }
         }
       },
@@ -426,7 +412,7 @@
           "description": "",
           "id": 4,
           "links": [],
-          "title": "New panel",
+          "title": "",
           "vizConfig": {
             "group": "text",
             "kind": "VizConfig",
@@ -441,11 +427,11 @@
                   "showLineNumbers": false,
                   "showMiniMap": false
                 },
-                "content": "# ${levelName}",
-                "mode": "markdown"
+                "content": "<br>\n<h1>${levelName}</h1>\n",
+                "mode": "html"
               }
             },
-            "version": "12.4.0-21966731219"
+            "version": "12.4.0-22066786794"
           }
         }
       },
@@ -542,7 +528,45 @@
                 "showHeader": true
               }
             },
-            "version": "12.4.0-21966731219"
+            "version": "12.4.0-22066786794"
+          }
+        }
+      },
+      "panel-6": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [],
+              "queryOptions": {},
+              "transformations": []
+            }
+          },
+          "description": "",
+          "id": 6,
+          "links": [],
+          "title": "",
+          "transparent": true,
+          "vizConfig": {
+            "group": "text",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {},
+                "overrides": []
+              },
+              "options": {
+                "code": {
+                  "language": "plaintext",
+                  "showLineNumbers": false,
+                  "showMiniMap": false
+                },
+                "content": "<img src=\"https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/M1_Logo.png\" />",
+                "mode": "html"
+              }
+            },
+            "version": "12.4.0-22066786794"
           }
         }
       }
@@ -556,11 +580,24 @@
             "spec": {
               "element": {
                 "kind": "ElementReference",
+                "name": "panel-6"
+              },
+              "height": 4,
+              "width": 2,
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
                 "name": "panel-4"
               },
-              "height": 3,
-              "width": 8,
-              "x": 0,
+              "height": 4,
+              "width": 6,
+              "x": 2,
               "y": 0
             }
           },
@@ -571,7 +608,7 @@
                 "kind": "ElementReference",
                 "name": "panel-5"
               },
-              "height": 3,
+              "height": 4,
               "width": 8,
               "x": 8,
               "y": 0
@@ -584,7 +621,7 @@
                 "kind": "ElementReference",
                 "name": "panel-3"
               },
-              "height": 13,
+              "height": 21,
               "width": 8,
               "x": 16,
               "y": 0
@@ -597,10 +634,10 @@
                 "kind": "ElementReference",
                 "name": "panel-1"
               },
-              "height": 10,
+              "height": 17,
               "width": 8,
               "x": 0,
-              "y": 3
+              "y": 4
             }
           },
           {
@@ -610,10 +647,10 @@
                 "kind": "ElementReference",
                 "name": "panel-2"
               },
-              "height": 10,
+              "height": 17,
               "width": 8,
               "x": 8,
-              "y": 3
+              "y": 4
             }
           }
         ]
