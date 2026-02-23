@@ -863,7 +863,7 @@
             "value": "https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/M1_Logo.png"
           },
           "definition": "marathon-game-data.marathon-game-details.aggregate([\n  {$match: {title: '${gameName}'}},\n  {$project: {_id: 0, logoUrl: '$logo'}}\n])\n",
-          "hide": "dontHide",
+          "hide": "hideVariable",
           "includeAll": false,
           "label": "",
           "multi": false,
