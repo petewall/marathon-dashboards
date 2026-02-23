@@ -76,12 +76,15 @@ monsters:
   - name: Looker
     image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/looker-m1.png
     metricPrefix: minor looker
+  - name: Invisible Looker
+    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/looker-m1.png
+    metricPrefix: invisible looker
   - name: Major Looker
     image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/looker-m1.png
     metricPrefix: minor looker
-  - name: crew bob
+  - name: Assimilated Bob
     image: http://...
-    metricPrefix: crew bob
+    metricPrefix: explodabob
   - name: madd
     image: http://...
     metricPrefix: madd

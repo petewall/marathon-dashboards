@@ -1,0 +1,15 @@
+{
+  "name": "marathon-file-stats-plugin",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:petewall/marathon-file-stats-plugin.git",
+  "author": "Pete Wall <pete.wall@grafana.com>",
+  "license": "MIT",
+  "scripts": {
+    "upload-stats": "node scripts/upload-stats.js"
+  },
+  "dependencies": {
+    "mongodb": "^7.0.0",
+    "yaml": "^2.8.2"
+  }
+}
