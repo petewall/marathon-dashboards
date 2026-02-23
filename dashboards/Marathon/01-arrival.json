@@ -562,7 +562,7 @@
                   "showLineNumbers": false,
                   "showMiniMap": false
                 },
-                "content": "\u003cimg src=\"https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/M1_Logo.png\" /\u003e",
+                "content": "\u003cimg src=\"${logoUrl}\" /\u003e",
                 "mode": "html"
               }
             },
@@ -786,6 +786,40 @@
             "spec": {
               "parsedQuery": "marathon-game-data.marathon-game-details.aggregate([{\"$match\":{\"title\":\"Marathon\"}},{\"$unwind\":\"$levels\"},{\"$match\":{\"levels.title\":\"Arrival\"}},{\"$project\":{\"_id\":0,\"mapUrl\":\"$levels.mapUrl\"}}])\n",
               "query": "marathon-game-data.marathon-game-details.aggregate([\n  { $match: {title: '${gameName}'}},\n  { $unwind: '$levels'},\n  { $match: {'levels.title': '${levelNames}'}},\n  { $project: {\n      _id: 0,\n      mapUrl: '$levels.mapUrl'\n    }\n  }\n])\n",
+              "queryType": "query"
+            },
+            "version": "v0"
+          },
+          "refresh": "onDashboardLoad",
+          "regex": "",
+          "regexApplyTo": "value",
+          "skipUrlSync": false,
+          "sort": "disabled"
+        }
+      },
+      {
+        "kind": "QueryVariable",
+        "spec": {
+          "allowCustomValue": false,
+          "current": {
+            "text": "https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/M1_Logo.png",
+            "value": "https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/M1_Logo.png"
+          },
+          "definition": "marathon-game-data.marathon-game-details.aggregate([\n  {$match: {title: '${gameName}'}},\n  {$project: {_id: 0, logoUrl: '$logo'}}\n])\n",
+          "hide": "hideVariable",
+          "includeAll": false,
+          "multi": false,
+          "name": "logoUrl",
+          "options": [],
+          "query": {
+            "datasource": {
+              "name": "ffbxubp3owa9sc"
+            },
+            "group": "grafana-mongodb-datasource",
+            "kind": "DataQuery",
+            "spec": {
+              "parsedQuery": "marathon-game-data.marathon-game-details.aggregate([{\"$match\":{\"title\":\"Marathon\"}},{\"$project\":{\"_id\":0,\"logoUrl\":\"$logo\"}}])\n",
+              "query": "marathon-game-data.marathon-game-details.aggregate([\n  {$match: {title: '${gameName}'}},\n  {$project: {_id: 0, logoUrl: '$logo'}}\n])\n",
               "queryType": "query"
             },
             "version": "v0"
