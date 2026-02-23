@@ -706,7 +706,7 @@
           "definition": "marathon-game-data.marathon-game-details.aggregate([\n  {$project: {_id: 0, gameNames: '$title'}}\n])\n",
           "hide": "dontHide",
           "includeAll": false,
-          "label": "",
+          "label": "Game",
           "multi": false,
           "name": "gameName",
           "options": [],
@@ -738,7 +738,7 @@
             "text": "Arrival",
             "value": "Arrival"
           },
-          "definition": "marathon-game-data.marathon-game-details.aggregate([\n  { $match: {title: '$gameNames'}},\n  { $unwind: '$levels' },\n  { $project: { _id: 0, title: '$levels.title'}}\n])\n",
+          "definition": "marathon-game-data.marathon-game-details.aggregate([\n  { $match: {title: '$gameName'}},\n  { $unwind: '$levels' },\n  { $project: { _id: 0, title: '$levels.title'}}\n])\n",
           "hide": "dontHide",
           "includeAll": false,
           "label": "Level",
@@ -752,8 +752,8 @@
             "group": "grafana-mongodb-datasource",
             "kind": "DataQuery",
             "spec": {
-              "parsedQuery": "marathon-game-data.marathon-game-details.aggregate([{\"$match\":{\"title\":\"Marathon\"}},{\"$unwind\":\"$levels\"},{\"$project\":{\"_id\":0,\"title\":\"$levels.title\"}}])\n",
-              "query": "marathon-game-data.marathon-game-details.aggregate([\n  { $match: {title: '$gameNames'}},\n  { $unwind: '$levels' },\n  { $project: { _id: 0, title: '$levels.title'}}\n])\n",
+              "parsedQuery": "marathon-game-data.marathon-game-details.aggregate([{\"$match\":{\"title\":\"$gameName\"}},{\"$unwind\":\"$levels\"},{\"$project\":{\"_id\":0,\"title\":\"$levels.title\"}}])\n",
+              "query": "marathon-game-data.marathon-game-details.aggregate([\n  { $match: {title: '$gameName'}},\n  { $unwind: '$levels' },\n  { $project: { _id: 0, title: '$levels.title'}}\n])\n",
               "queryType": "query"
             },
             "version": "v0"
@@ -773,7 +773,7 @@
             "text": "https://www.lhowon.org/levels/marathon/standard/0.png",
             "value": "https://www.lhowon.org/levels/marathon/standard/0.png"
           },
-          "definition": "marathon-game-data.marathon-game-details.aggregate([\n  { $match: {title: '${gameName}'}},\n  { $unwind: '$levels'},\n  { $match: {'levels.title': '${levelNames}'}},\n  { $project: {\n      _id: 0,\n      mapUrl: '$levels.mapUrl'\n    }\n  }\n])\n",
+          "definition": "marathon-game-data.marathon-game-details.aggregate([\n  { $match: {title: '${gameName}'}},\n  { $unwind: '$levels'},\n  { $match: {'levels.title': '${levelName}'}},\n  { $project: {\n      _id: 0,\n      mapUrl: '$levels.mapUrl'\n    }\n  }\n])\n",
           "hide": "hideVariable",
           "includeAll": false,
           "multi": false,
@@ -787,7 +787,7 @@
             "kind": "DataQuery",
             "spec": {
               "parsedQuery": "marathon-game-data.marathon-game-details.aggregate([{\"$match\":{\"title\":\"Marathon\"}},{\"$unwind\":\"$levels\"},{\"$match\":{\"levels.title\":\"Arrival\"}},{\"$project\":{\"_id\":0,\"mapUrl\":\"$levels.mapUrl\"}}])\n",
-              "query": "marathon-game-data.marathon-game-details.aggregate([\n  { $match: {title: '${gameName}'}},\n  { $unwind: '$levels'},\n  { $match: {'levels.title': '${levelNames}'}},\n  { $project: {\n      _id: 0,\n      mapUrl: '$levels.mapUrl'\n    }\n  }\n])\n",
+              "query": "marathon-game-data.marathon-game-details.aggregate([\n  { $match: {title: '${gameName}'}},\n  { $unwind: '$levels'},\n  { $match: {'levels.title': '${levelName}'}},\n  { $project: {\n      _id: 0,\n      mapUrl: '$levels.mapUrl'\n    }\n  }\n])\n",
               "queryType": "query"
             },
             "version": "v0"
