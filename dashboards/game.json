@@ -499,6 +499,66 @@
             "version": "13.0.0-22184160961"
           }
         }
+      },
+      "panel-7": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [],
+              "queryOptions": {},
+              "transformations": []
+            }
+          },
+          "description": "",
+          "id": 7,
+          "links": [],
+          "title": "",
+          "transparent": true,
+          "vizConfig": {
+            "group": "text",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {},
+                "overrides": [
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "Accuracy"
+                    },
+                    "properties": []
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": " "
+                    },
+                    "properties": []
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "  "
+                    },
+                    "properties": []
+                  }
+                ]
+              },
+              "options": {
+                "code": {
+                  "language": "plaintext",
+                  "showLineNumbers": false,
+                  "showMiniMap": false
+                },
+                "content": "## ${gameReleaseDate}",
+                "mode": "markdown"
+              }
+            },
+            "version": "13.0.0-22184160961"
+          }
+        }
       }
     },
     "layout": {
@@ -512,8 +572,8 @@
                 "kind": "ElementReference",
                 "name": "panel-2"
               },
-              "height": 5,
-              "width": 3,
+              "height": 4,
+              "width": 2,
               "x": 0,
               "y": 0
             }
@@ -525,10 +585,23 @@
                 "kind": "ElementReference",
                 "name": "panel-4"
               },
-              "height": 5,
-              "width": 21,
-              "x": 3,
+              "height": 2,
+              "width": 22,
+              "x": 2,
               "y": 0
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-7"
+              },
+              "height": 2,
+              "width": 22,
+              "x": 2,
+              "y": 2
             }
           },
           {
@@ -541,7 +614,7 @@
               "height": 12,
               "width": 12,
               "x": 0,
-              "y": 5
+              "y": 4
             }
           },
           {
@@ -554,7 +627,7 @@
               "height": 12,
               "width": 12,
               "x": 12,
-              "y": 5
+              "y": 4
             }
           }
         ]
@@ -659,6 +732,41 @@
             "spec": {
               "parsedQuery": "marathon-game-data.marathon-game-details.aggregate([{\"$match\":{\"title\":\"Marathon\"}},{\"$project\":{\"_id\":0,\"logoUrl\":\"$logo\"}}])\n",
               "query": "marathon-game-data.marathon-game-details.aggregate([\n  {$match: {title: '${gameName}'}},\n  {$project: {_id: 0, logoUrl: '$logo'}}\n])\n",
+              "queryType": "query"
+            },
+            "version": "v0"
+          },
+          "refresh": "onDashboardLoad",
+          "regex": "",
+          "regexApplyTo": "value",
+          "skipUrlSync": false,
+          "sort": "disabled"
+        }
+      },
+      {
+        "kind": "QueryVariable",
+        "spec": {
+          "allowCustomValue": false,
+          "current": {
+            "text": "1994",
+            "value": "1994"
+          },
+          "definition": "marathon-game-data.marathon-game-details.aggregate([\n  {$match: {title: '${gameName}'}},\n  {$project: {_id: 0, releaseDate: '$releaseDate'}}\n])\n",
+          "hide": "hideVariable",
+          "includeAll": false,
+          "label": "",
+          "multi": false,
+          "name": "gameReleaseDate",
+          "options": [],
+          "query": {
+            "datasource": {
+              "name": "ffbxubp3owa9sc"
+            },
+            "group": "grafana-mongodb-datasource",
+            "kind": "DataQuery",
+            "spec": {
+              "parsedQuery": "marathon-game-data.marathon-game-details.aggregate([{\"$match\":{\"title\":\"Marathon\"}},{\"$project\":{\"_id\":0,\"releaseDate\":\"\"}}])\n",
+              "query": "marathon-game-data.marathon-game-details.aggregate([\n  {$match: {title: '${gameName}'}},\n  {$project: {_id: 0, releaseDate: '$releaseDate'}}\n])\n",
               "queryType": "query"
             },
             "version": "v0"
