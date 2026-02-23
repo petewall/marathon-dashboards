@@ -1,7 +1,7 @@
 ---
 name: Marathon 2
 releaseDate: 1995
-logo: http://...
+logo: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/M2_Logo.png
 levels:
   - name: Waterloo Waterpark
     mapUrl: https://www.lhowon.org/levels/marathon-2/standard/0.png

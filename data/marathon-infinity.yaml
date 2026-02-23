@@ -1,7 +1,7 @@
 ---
 name: Marathon Infinity
 releaseDate: 1996
-logo: http://...
+logo: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/MI_Logo.png
 levels:
   - name: Ne Cede Malis
     mapUrl: https://www.lhowon.org/levels/marathon-infinity/standard/0.png

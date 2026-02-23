@@ -1,7 +1,7 @@
 ---
-name: Marathon 1
+name: Marathon
 releaseDate: 1994
-logo: http://...
+logo: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/M1_Logo.png
 weapons:
   - name: Pistol
     firedMetric: pistol bullets fired
