@@ -559,6 +559,104 @@
             "version": "13.0.0-22184160961"
           }
         }
+      },
+      "panel-8": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "datasource": {
+                        "name": "ffbxubp3owa9sc"
+                      },
+                      "group": "grafana-mongodb-datasource",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "parsedQuery": "marathon-game-data.marathon-game-details.aggregate([{\"$match\":{\"title\":\"Marathon\"}},{\"$unwind\":{\"path\":\"$levels\",\"includeArrayIndex\":\"levelNumber\"}},{\"$project\":{\"_id\":0,\"levelNumber\":{\"$add\":[\"$levelNumber\",1]},\"level\":\"$levels.title\"}}])\n",
+                        "query": "marathon-game-data.marathon-game-details.aggregate([\n  { $match: {title: '$gameName'}},\n  { $unwind: {\n    path: '$levels',\n    includeArrayIndex: 'levelNumber'\n  }},\n  { $project: { _id: 0, levelNumber: { $add: ['$levelNumber', 1] }, level: '$levels.title'}}\n])\n",
+                        "queryType": "query"
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "A"
+                  }
+                },
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "datasource": {
+                        "name": "ffbxubp3owa9sc"
+                      },
+                      "group": "grafana-mongodb-datasource",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "parsedQuery": "marathon-game-data.marathon-level-data.aggregate([{\"$match\":{\"title\":\"Marathon\"}},{\"$group\":{\"_id\":{\"levelTitle\":\"$level\"},\"completions\":{\"$sum\":{\"$toInt\":{\"$ifNull\":[\"$level completed\",0]}}},\"deaths\":{\"$sum\":{\"$toInt\":{\"$ifNull\":[\"$deaths\",0]}}},\"playtime\":{\"$sum\":{\"$subtract\":[{\"$toInt\":{\"$ifNull\":[\"$end tick\",0]}},{\"$toInt\":{\"$ifNull\":[\"$start tick\",0]}}]}}}},{\"$project\":{\"_id\":0,\"Level\":\"$_id.levelTitle\",\"Completions\":1,\"Deaths\":1,\"Playtime\":1}}])\n",
+                        "query": "marathon-game-data.marathon-level-data.aggregate([\n  { $match: {title: '$gameName'}},\n  {\n    $group: {\n      _id: {\n              levelTitle: '$level'\n      },\n      completions: {\n        $sum: { $toInt: { $ifNull: ['$level completed', 0] } }\n      },\n      deaths: {\n        $sum: { $toInt: { $ifNull: ['$deaths', 0] } }\n      },\n      playtime: {\n        $sum: {\n          $subtract: [\n            { $toInt: { $ifNull: ['$end tick', 0] } },\n            { $toInt: { $ifNull: ['$start tick', 0] } }\n          ]\n        }\n      }\n    }\n  },\n  {\n    $project: {\n      _id: 0,\n      Level: '$_id.levelTitle',\n      Completions: 1,\n      Deaths: 1,\n      Playtime: 1\n    }\n  }\n])\n",
+                        "queryType": "query"
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "B"
+                  }
+                }
+              ],
+              "queryOptions": {},
+              "transformations": []
+            }
+          },
+          "description": "",
+          "id": 8,
+          "links": [],
+          "title": "",
+          "vizConfig": {
+            "group": "table",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {
+                    "align": "auto",
+                    "cellOptions": {
+                      "type": "auto"
+                    },
+                    "footer": {
+                      "reducers": []
+                    },
+                    "inspect": false
+                  },
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": 0
+                      },
+                      {
+                        "color": "red",
+                        "value": 80
+                      }
+                    ]
+                  }
+                },
+                "overrides": []
+              },
+              "options": {
+                "cellHeight": "sm",
+                "frameIndex": 0,
+                "showHeader": true
+              }
+            },
+            "version": "13.0.0-22184160961"
+          }
+        }
       }
     },
     "layout": {
@@ -628,6 +726,19 @@
               "width": 12,
               "x": 12,
               "y": 4
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-8"
+              },
+              "height": 8,
+              "width": 12,
+              "x": 0,
+              "y": 16
             }
           }
         ]
