@@ -668,29 +668,11 @@
         "tooltip": "View source file in repository",
         "type": "link",
         "url": "https://github.com/petewall/marathon-dashboards/blob/main/dashboards/Marathon/01-arrival.json"
-      },
-      {
-        "asDropdown": true,
-        "icon": "external link",
-        "includeVars": false,
-        "keepTime": false,
-        "tags": [
-          "level",
-          "marathon"
-        ],
-        "targetBlank": false,
-        "title": "Levels",
-        "tooltip": "",
-        "type": "dashboards",
-        "url": ""
       }
     ],
     "liveNow": false,
     "preload": false,
-    "tags": [
-      "level",
-      "marathon"
-    ],
+    "tags": [],
     "timeSettings": {
       "autoRefresh": "",
       "autoRefreshIntervals": [
@@ -711,7 +693,7 @@
       "timezone": "browser",
       "to": "now"
     },
-    "title": "01 - Arrival",
+    "title": "Level",
     "variables": [
       {
         "kind": "ConstantVariable",
