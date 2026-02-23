@@ -190,65 +190,7 @@
                 "showHeader": true
               }
             },
-            "version": "12.4.0-21945166758"
-          }
-        }
-      },
-      "panel-3": {
-        "kind": "Panel",
-        "spec": {
-          "data": {
-            "kind": "QueryGroup",
-            "spec": {
-              "queries": [
-                {
-                  "kind": "PanelQuery",
-                  "spec": {
-                    "hidden": false,
-                    "query": {
-                      "group": "",
-                      "kind": "DataQuery",
-                      "spec": {},
-                      "version": "v0"
-                    },
-                    "refId": "A"
-                  }
-                }
-              ],
-              "queryOptions": {},
-              "transformations": []
-            }
-          },
-          "description": "",
-          "id": 3,
-          "links": [],
-          "title": "Levels",
-          "vizConfig": {
-            "group": "dashlist",
-            "kind": "VizConfig",
-            "spec": {
-              "fieldConfig": {
-                "defaults": {},
-                "overrides": []
-              },
-              "options": {
-                "folderUID": "marathon-bplfvndq-4h1hmovj3mr7kus3qkjeuo",
-                "includeVars": false,
-                "keepTime": false,
-                "maxItems": 100,
-                "query": "",
-                "showFolderNames": true,
-                "showHeadings": true,
-                "showRecentlyViewed": false,
-                "showSearch": true,
-                "showStarred": false,
-                "tags": [
-                  "level",
-                  "marathon"
-                ]
-              }
-            },
-            "version": "12.4.0-21945166758"
+            "version": "13.0.0-22184160961"
           }
         }
       },
@@ -415,7 +357,7 @@
                 "showHeader": true
               }
             },
-            "version": "12.4.0-21945166758"
+            "version": "13.0.0-22184160961"
           }
         }
       }
@@ -448,19 +390,6 @@
               "width": 12,
               "x": 12,
               "y": 0
-            }
-          },
-          {
-            "kind": "GridLayoutItem",
-            "spec": {
-              "element": {
-                "kind": "ElementReference",
-                "name": "panel-3"
-              },
-              "height": 9,
-              "width": 24,
-              "x": 0,
-              "y": 10
             }
           }
         ]
