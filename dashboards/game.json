@@ -598,8 +598,8 @@
                       "group": "grafana-mongodb-datasource",
                       "kind": "DataQuery",
                       "spec": {
-                        "parsedQuery": "marathon-game-data.marathon-level-data.aggregate([{\"$match\":{\"title\":\"Marathon\"}},{\"$group\":{\"_id\":{\"levelTitle\":\"$level\"},\"completions\":{\"$sum\":{\"$toInt\":{\"$ifNull\":[\"$level completed\",0]}}},\"deaths\":{\"$sum\":{\"$toInt\":{\"$ifNull\":[\"$deaths\",0]}}},\"playtime\":{\"$sum\":{\"$subtract\":[{\"$toInt\":{\"$ifNull\":[\"$end tick\",0]}},{\"$toInt\":{\"$ifNull\":[\"$start tick\",0]}}]}}}},{\"$project\":{\"_id\":0,\"Level\":\"$_id.levelTitle\",\"Completions\":1,\"Deaths\":1,\"Playtime\":1}}])\n",
-                        "query": "marathon-game-data.marathon-level-data.aggregate([\n  { $match: {title: '$gameName'}},\n  {\n    $group: {\n      _id: {\n              levelTitle: '$level'\n      },\n      completions: {\n        $sum: { $toInt: { $ifNull: ['$level completed', 0] } }\n      },\n      deaths: {\n        $sum: { $toInt: { $ifNull: ['$deaths', 0] } }\n      },\n      playtime: {\n        $sum: {\n          $subtract: [\n            { $toInt: { $ifNull: ['$end tick', 0] } },\n            { $toInt: { $ifNull: ['$start tick', 0] } }\n          ]\n        }\n      }\n    }\n  },\n  {\n    $project: {\n      _id: 0,\n      Level: '$_id.levelTitle',\n      Completions: 1,\n      Deaths: 1,\n      Playtime: 1\n    }\n  }\n])\n",
+                        "parsedQuery": "marathon-game-data.marathon-level-data.aggregate([{\"$match\":{\"scenario name\":\"Marathon\"}},{\"$group\":{\"_id\":{\"levelTitle\":\"$level\"},\"completions\":{\"$sum\":{\"$toInt\":{\"$ifNull\":[\"$level completed\",0]}}},\"deaths\":{\"$sum\":{\"$toInt\":{\"$ifNull\":[\"$deaths\",0]}}},\"playtime\":{\"$sum\":{\"$subtract\":[{\"$toInt\":{\"$ifNull\":[\"$end tick\",0]}},{\"$toInt\":{\"$ifNull\":[\"$start tick\",0]}}]}}}},{\"$project\":{\"_id\":0,\"level\":\"$_id.levelTitle\",\"completions\":1,\"deaths\":1,\"playtime\":1}}])\n",
+                        "query": "marathon-game-data.marathon-level-data.aggregate([\n  {\n    $match: {\n      'scenario name': '${gameName}',\n    }\n  },\n  {\n    $group: {\n      _id: {\n              levelTitle: '$level'\n      },\n      completions: {\n        $sum: { $toInt: { $ifNull: ['$level completed', 0] } }\n      },\n      deaths: {\n        $sum: { $toInt: { $ifNull: ['$deaths', 0] } }\n      },\n      playtime: {\n        $sum: {\n          $subtract: [\n            { $toInt: { $ifNull: ['$end tick', 0] } },\n            { $toInt: { $ifNull: ['$start tick', 0] } }\n          ]\n        }\n      }\n    }\n  },\n  {\n    $project: {\n      _id: 0,\n      level: '$_id.levelTitle',\n      completions: 1,\n      deaths: 1,\n      playtime: 1\n    }\n  }\n])\n",
                         "queryType": "query"
                       },
                       "version": "v0"
@@ -609,7 +609,42 @@
                 }
               ],
               "queryOptions": {},
-              "transformations": []
+              "transformations": [
+                {
+                  "kind": "joinByField",
+                  "spec": {
+                    "id": "joinByField",
+                    "options": {
+                      "byField": "level",
+                      "mode": "inner"
+                    }
+                  }
+                },
+                {
+                  "kind": "organize",
+                  "spec": {
+                    "id": "organize",
+                    "options": {
+                      "excludeByName": {},
+                      "includeByName": {},
+                      "indexByName": {
+                        "completions": 2,
+                        "deaths": 3,
+                        "level": 1,
+                        "levelNumber": 0,
+                        "playtime": 4
+                      },
+                      "renameByName": {
+                        "completions": "Completions",
+                        "deaths": "Deaths",
+                        "level": "Level",
+                        "levelNumber": " ",
+                        "playtime": "Playtime"
+                      }
+                    }
+                  }
+                }
+              ]
             }
           },
           "description": "",
@@ -650,7 +685,7 @@
               },
               "options": {
                 "cellHeight": "sm",
-                "frameIndex": 0,
+                "frameIndex": 1,
                 "showHeader": true
               }
             },
@@ -735,8 +770,8 @@
                 "kind": "ElementReference",
                 "name": "panel-8"
               },
-              "height": 8,
-              "width": 12,
+              "height": 18,
+              "width": 24,
               "x": 0,
               "y": 16
             }
