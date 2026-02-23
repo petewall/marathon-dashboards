@@ -406,7 +406,7 @@
         "title": "Source (GitHub)",
         "tooltip": "View source file in repository",
         "type": "link",
-        "url": "https://github.com/petewall/marathon-dashboards/blob/main/dashboards/Marathon/summary.json"
+        "url": "https://github.com/petewall/marathon-dashboards/blob/main/dashboards/game.json"
       }
     ],
     "liveNow": false,
@@ -432,7 +432,7 @@
       "timezone": "browser",
       "to": "now"
     },
-    "title": "Summary",
+    "title": "Game",
     "variables": [
       {
         "kind": "ConstantVariable",
