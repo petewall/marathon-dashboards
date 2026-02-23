@@ -427,7 +427,7 @@
                   "showLineNumbers": false,
                   "showMiniMap": false
                 },
-                "content": "\u003cbr\u003e\n\u003ch1\u003e${levelNames}\u003c/h1\u003e\n",
+                "content": "\u003cbr\u003e\n\u003ch1\u003e${levelIndex} - ${levelNames}\u003c/h1\u003e\n",
                 "mode": "html"
               }
             },
@@ -453,7 +453,7 @@
                       "group": "grafana-mongodb-datasource",
                       "kind": "DataQuery",
                       "spec": {
-                        "parsedQuery": "marathon-game-data.marathon-level-data.aggregate([{\"$match\":{\"scenario name\":\"Marathon\",\"level\":\"Arrival\"}},{\"$group\":{\"_id\":null,\"completions\":{\"$sum\":{\"$toInt\":{\"$ifNull\":[\"$level completed\",0]}}},\"deaths\":{\"$sum\":{\"$toInt\":{\"$ifNull\":[\"$deaths\",0]}}},\"playtime\":{\"$sum\":{\"$subtract\":[{\"$toInt\":{\"$ifNull\":[\"$end tick\",0]}},{\"$toInt\":{\"$ifNull\":[\"$start tick\",0]}}]}}}},{\"$project\":{\"_id\":0,\"completions\":1,\"deaths\":1,\"playtime\":1}}])\n",
+                        "parsedQuery": "marathon-game-data.marathon-level-data.aggregate([{\"$match\":{\"scenario name\":\"Marathon\",\"level\":\"Bob-B-Q\"}},{\"$group\":{\"_id\":null,\"completions\":{\"$sum\":{\"$toInt\":{\"$ifNull\":[\"$level completed\",0]}}},\"deaths\":{\"$sum\":{\"$toInt\":{\"$ifNull\":[\"$deaths\",0]}}},\"playtime\":{\"$sum\":{\"$subtract\":[{\"$toInt\":{\"$ifNull\":[\"$end tick\",0]}},{\"$toInt\":{\"$ifNull\":[\"$start tick\",0]}}]}}}},{\"$project\":{\"_id\":0,\"completions\":1,\"deaths\":1,\"playtime\":1}}])\n",
                         "query": "marathon-game-data.marathon-level-data.aggregate([\n  {\n    $match: {\n      'scenario name': '${gameName}',\n      'level': '${levelNames}'\n    }\n  },\n  {\n    $group: {\n      _id: null,\n      completions: {\n        $sum: { $toInt: { $ifNull: ['$level completed', 0] } }\n      },\n      deaths: {\n        $sum: { $toInt: { $ifNull: ['$deaths', 0] } }\n      },\n      playtime: {\n        $sum: {\n          $subtract: [\n            { $toInt: { $ifNull: ['$end tick', 0] } },\n            { $toInt: { $ifNull: ['$start tick', 0] } }\n          ]\n        }\n      }\n    }\n  },\n  {\n    $project: {\n      _id: 0,\n      completions: 1,\n      deaths: 1,\n      playtime: 1\n    }\n  }\n])\n",
                         "queryType": "query"
                       },
@@ -802,6 +802,40 @@
             "spec": {
               "parsedQuery": "marathon-game-data.marathon-game-details.aggregate([{\"$match\":{\"title\":\"Marathon\"}},{\"$project\":{\"_id\":0,\"logoUrl\":\"$logo\"}}])\n",
               "query": "marathon-game-data.marathon-game-details.aggregate([\n  {$match: {title: '${gameName}'}},\n  {$project: {_id: 0, logoUrl: '$logo'}}\n])\n",
+              "queryType": "query"
+            },
+            "version": "v0"
+          },
+          "refresh": "onDashboardLoad",
+          "regex": "",
+          "regexApplyTo": "value",
+          "skipUrlSync": false,
+          "sort": "disabled"
+        }
+      },
+      {
+        "kind": "QueryVariable",
+        "spec": {
+          "allowCustomValue": false,
+          "current": {
+            "text": "1",
+            "value": "1"
+          },
+          "definition": "marathon-game-data.marathon-game-details.aggregate([\n  {\n    $match: {\n      title: '${gameName}'\n    }\n  },\n  {\n    $unwind: {\n      path: '$levels',\n      includeArrayIndex: 'levelNumber'\n    }\n  },\n  {\n    $match: {\n      'levels.title': '${levelNames}'\n    }\n  },\n  {\n    $project: {\n      _id: 0,\n      levelNumber: { $add: ['$levelNumber', 1] }\n    }\n  }\n])\n",
+          "hide": "hideVariable",
+          "includeAll": false,
+          "multi": false,
+          "name": "levelIndex",
+          "options": [],
+          "query": {
+            "datasource": {
+              "name": "ffbxubp3owa9sc"
+            },
+            "group": "grafana-mongodb-datasource",
+            "kind": "DataQuery",
+            "spec": {
+              "parsedQuery": "marathon-game-data.marathon-game-details.aggregate([{\"$match\":{\"title\":\"Marathon\"}},{\"$unwind\":{\"path\":\"$levels\",\"includeArrayIndex\":\"levelNumber\"}},{\"$match\":{\"levels.title\":\"Arrival\"}},{\"$project\":{\"_id\":0,\"levelNumber\":{\"$add\":[\"$levelNumber\",1]}}}])\n",
+              "query": "marathon-game-data.marathon-game-details.aggregate([\n  {\n    $match: {\n      title: '${gameName}'\n    }\n  },\n  {\n    $unwind: {\n      path: '$levels',\n      includeArrayIndex: 'levelNumber'\n    }\n  },\n  {\n    $match: {\n      'levels.title': '${levelNames}'\n    }\n  },\n  {\n    $project: {\n      _id: 0,\n      levelNumber: { $add: ['$levelNumber', 1] }\n    }\n  }\n])\n",
               "queryType": "query"
             },
             "version": "v0"
