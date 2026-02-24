@@ -616,7 +616,7 @@
                     "id": "joinByField",
                     "options": {
                       "byField": "level",
-                      "mode": "inner"
+                      "mode": "outer"
                     }
                   }
                 },
