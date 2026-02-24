@@ -692,7 +692,7 @@
                         "id": "links",
                         "value": [
                           {
-                            "targetBlank": false,
+                            "targetBlank": true,
                             "title": "View Level",
                             "url": "/d/dffch95jj8xybkc/level?var-levelIndexes=${__data.fields.levelNumber}"
                           }
@@ -710,7 +710,7 @@
                         "id": "links",
                         "value": [
                           {
-                            "targetBlank": false,
+                            "targetBlank": true,
                             "title": "View Level",
                             "url": "/d/dffch95jj8xybkc/level?var-levelIndexes=${__data.fields.levelNumber}"
                           }
