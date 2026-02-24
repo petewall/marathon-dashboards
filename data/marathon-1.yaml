@@ -27,6 +27,14 @@ weapons:
     firedMetric: flamethrower bursts fired
     hitMetric: flamethrower bursts hit
     image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/weapons/flame-m1.png
+  - name: Alien Weapon
+    firedMetric: alien weapons fired
+    hitMetric: alien weapons hit
+    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/weapons/alien-m1.png
+  - name: Missiles
+    firedMetric: missiles fired
+    hitMetric: missiles hit
+    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/weapons/rocket-m1.png
 monsters:
   - name: Fighter
     image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/fighter-minor.png
@@ -46,6 +54,9 @@ monsters:
   - name: Major Trooper
     image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/trooper-major.png
     metricPrefix: major trooper
+  - name: Minor Enforcer
+    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/enforcer-m1.png
+    metricPrefix: minor enforcer
   - name: Compiler
     image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/spht-minor-m1.png
     metricPrefix: minor compiler

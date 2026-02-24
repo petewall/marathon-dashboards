@@ -46,7 +46,7 @@ if (weaponsWithMetrics.length === 0) {
 
 const matchStage = {
 	$match: {
-		'scenario name': '${game}',
+		'scenario name': '${gameName}',
 		'level index': '${levelIndex}'
 	}
 };
@@ -106,5 +106,5 @@ const pipelineString = util.inspect(pipeline, {
 });
 
 console.log(
-	`marathon-game-data.marathon-game-data.aggregate(${pipelineString})`
+	`marathon-game-data.marathon-level-data.aggregate(${pipelineString})`
 );
