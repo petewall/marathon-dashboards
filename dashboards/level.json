@@ -453,8 +453,8 @@
                       "group": "grafana-mongodb-datasource",
                       "kind": "DataQuery",
                       "spec": {
-                        "parsedQuery": "marathon-game-data.marathon-level-data.aggregate([{\"$match\":{\"scenario name\":\"Marathon\",\"level\":\"Arrival\"}},{\"$group\":{\"_id\":null,\"completions\":{\"$sum\":{\"$toInt\":{\"$ifNull\":[\"$level completed\",0]}}},\"deaths\":{\"$sum\":{\"$toInt\":{\"$ifNull\":[\"$deaths\",0]}}},\"playtime\":{\"$sum\":{\"$subtract\":[{\"$toInt\":{\"$ifNull\":[\"$end tick\",0]}},{\"$toInt\":{\"$ifNull\":[\"$start tick\",0]}}]}}}},{\"$project\":{\"_id\":0,\"completions\":1,\"deaths\":1,\"playtime\":1}}])\n",
-                        "query": "marathon-game-data.marathon-level-data.aggregate([\n  {\n    $match: {\n      'scenario name': '${gameName}',\n      'level': '${levelNames}'\n    }\n  },\n  {\n    $group: {\n      _id: null,\n      completions: {\n        $sum: { $toInt: { $ifNull: ['$level completed', 0] } }\n      },\n      deaths: {\n        $sum: { $toInt: { $ifNull: ['$deaths', 0] } }\n      },\n      playtime: {\n        $sum: {\n          $subtract: [\n            { $toInt: { $ifNull: ['$end tick', 0] } },\n            { $toInt: { $ifNull: ['$start tick', 0] } }\n          ]\n        }\n      }\n    }\n  },\n  {\n    $project: {\n      _id: 0,\n      completions: 1,\n      deaths: 1,\n      playtime: 1\n    }\n  }\n])\n",
+                        "parsedQuery": "marathon-game-data.marathon-level-data.aggregate([{\"$match\":{\"scenario name\":\"Marathon\",\"$expr\":{\"$eq\":[{\"$toInt\":\"$level index\"},{\"$subtract\":[{\"$toInt\":\"17\"},1]}]}}},{\"$group\":{\"_id\":null,\"completions\":{\"$sum\":{\"$toInt\":{\"$ifNull\":[\"$level completed\",0]}}},\"deaths\":{\"$sum\":{\"$toInt\":{\"$ifNull\":[\"$deaths\",0]}}},\"playtime\":{\"$sum\":{\"$subtract\":[{\"$toInt\":{\"$ifNull\":[\"$end tick\",0]}},{\"$toInt\":{\"$ifNull\":[\"$start tick\",0]}}]}}}},{\"$project\":{\"_id\":0,\"completions\":1,\"deaths\":1,\"playtime\":1}}])\n",
+                        "query": "marathon-game-data.marathon-level-data.aggregate([\n  {\n    $match: {\n      'scenario name': '${gameName}',\n\t\t  $expr: {$eq: [\n\t\t\t\t{ $toInt: '$level index' },\n\t\t\t\t{ $subtract: [{ $toInt: '${levelNum}' }, 1] }\n      ]}\n    }\n  },\n  {\n    $group: {\n      _id: null,\n      completions: {\n        $sum: { $toInt: { $ifNull: ['$level completed', 0] } }\n      },\n      deaths: {\n        $sum: { $toInt: { $ifNull: ['$deaths', 0] } }\n      },\n      playtime: {\n        $sum: {\n          $subtract: [\n            { $toInt: { $ifNull: ['$end tick', 0] } },\n            { $toInt: { $ifNull: ['$start tick', 0] } }\n          ]\n        }\n      }\n    }\n  },\n  {\n    $project: {\n      _id: 0,\n      completions: 1,\n      deaths: 1,\n      playtime: 1\n    }\n  }\n])\n",
                         "queryType": "query"
                       },
                       "version": "v0"
@@ -715,8 +715,8 @@
         "spec": {
           "allowCustomValue": false,
           "current": {
-            "text": "Arrival",
-            "value": "Arrival"
+            "text": "Pfhor Your Eyes Only…",
+            "value": "Pfhor Your Eyes Only…"
           },
           "definition": "marathon-game-data.marathon-game-details.aggregate([\n  { $match: {title: '$gameName'}},\n  { $unwind: '$levels' },\n  { $project: { _id: 0, title: '$levels.title'}}\n])\n",
           "hide": "dontHide",
@@ -750,8 +750,8 @@
         "spec": {
           "allowCustomValue": false,
           "current": {
-            "text": "https://www.lhowon.org/levels/marathon/standard/0.png",
-            "value": "https://www.lhowon.org/levels/marathon/standard/0.png"
+            "text": "https://www.lhowon.org/levels/marathon/standard/16.png",
+            "value": "https://www.lhowon.org/levels/marathon/standard/16.png"
           },
           "definition": "marathon-game-data.marathon-game-details.aggregate([\n  { $match: {title: '${gameName}'}},\n  { $unwind: '$levels'},\n  { $match: {'levels.title': '${levelNames}'}},\n  { $project: {\n      _id: 0,\n      mapUrl: '$levels.mapUrl'\n    }\n  }\n])\n",
           "hide": "hideVariable",
@@ -818,8 +818,8 @@
         "spec": {
           "allowCustomValue": false,
           "current": {
-            "text": "1",
-            "value": "1"
+            "text": "17",
+            "value": "17"
           },
           "definition": "marathon-game-data.marathon-game-details.aggregate([\n  {\n    $match: {\n      title: '${gameName}'\n    }\n  },\n  {\n    $unwind: {\n      path: '$levels',\n      includeArrayIndex: 'levelNumber'\n    }\n  },\n  {\n    $match: {\n      'levels.title': '${levelNames}'\n    }\n  },\n  {\n    $project: {\n      _id: 0,\n      levelNumber: { $add: ['$levelNumber', 1] }\n    }\n  }\n])\n",
           "hide": "hideVariable",
