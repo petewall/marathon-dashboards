@@ -333,7 +333,8 @@
               },
               "options": {
                 "cellHeight": "sm",
-                "showHeader": true
+                "showHeader": true,
+                "sortBy": []
               }
             },
             "version": "13.0.0-22515653778"
@@ -493,7 +494,13 @@
               },
               "options": {
                 "cellHeight": "sm",
-                "showHeader": true
+                "showHeader": true,
+                "sortBy": [
+                  {
+                    "desc": true,
+                    "displayName": "Kills"
+                  }
+                ]
               }
             },
             "version": "13.0.0-22515653778"
