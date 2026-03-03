@@ -47,7 +47,7 @@ if (weaponsWithMetrics.length === 0) {
 const matchStage = {
 	$match: {
 		'scenario name': '${gameName}',
-		'level index': '${levelIndex}'
+		'level': '${levelNames}'
 	}
 };
 const groupStage = { $group: { _id: null } };

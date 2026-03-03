@@ -92,12 +92,12 @@ monsters:
     metricPrefix: invisible looker
   - name: Major Looker
     image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/looker-m1.png
-    metricPrefix: minor looker
+    metricPrefix: major looker
   - name: Assimilated Bob
-    image: http://...
+    image: http://…
     metricPrefix: explodabob
   - name: madd
-    image: http://...
+    image: http://…
     metricPrefix: madd
 levels:
   - name: Arrival
@@ -122,7 +122,7 @@ levels:
     mapUrl: https://www.lhowon.org/levels/marathon/standard/9.png
   - name: Bob-B-Q
     mapUrl: https://www.lhowon.org/levels/marathon/standard/10.png
-  - name: Shake Before Using...
+  - name: Shake Before Using…
     mapUrl: https://www.lhowon.org/levels/marathon/standard/11.png
   - name: Fire! Fire! Fire! Fire! Fire!
     mapUrl: https://www.lhowon.org/levels/marathon/standard/12.png
@@ -132,23 +132,23 @@ levels:
     mapUrl: https://www.lhowon.org/levels/marathon/standard/14.png
   - name: Neither High nor Low
     mapUrl: https://www.lhowon.org/levels/marathon/standard/15.png
-  - name: Pfhor Your Eyes Only...
+  - name: Pfhor Your Eyes Only…
     mapUrl: https://www.lhowon.org/levels/marathon/standard/16.png
   - name: No Artificial Colors
     mapUrl: https://www.lhowon.org/levels/marathon/standard/17.png
   - name: Unpfhorgiven
     mapUrl: https://www.lhowon.org/levels/marathon/standard/18.png
-  - name: Two Times Two Equals...
+  - name: Two Times Two Equals…
     mapUrl: https://www.lhowon.org/levels/marathon/standard/19.png
-  - name: Beware of Low-Flying Defense Drones...
+  - name: Beware of Low-Flying Defense Drones…
     mapUrl: https://www.lhowon.org/levels/marathon/standard/20.png
   - name: Eupfhoria
     mapUrl: https://www.lhowon.org/levels/marathon/standard/21.png
   - name: Pfhoraphobia
     mapUrl: https://www.lhowon.org/levels/marathon/standard/22.png
-  - name: Ain't Got Time Pfhor This...
+  - name: Ain't Got Time Pfhor This…
     mapUrl: https://www.lhowon.org/levels/marathon/standard/23.png
-  - name: Welcome to the Revolution...
+  - name: Welcome to the Revolution…
     mapUrl: https://www.lhowon.org/levels/marathon/standard/24.png
   - name: Try again
     mapUrl: https://www.lhowon.org/levels/marathon/standard/25.png
