@@ -56,7 +56,12 @@ const slugify = (value) =>
 const matchStage = {
 	$match: {
 		'scenario name': '${gameName}',
-		'level index': '${levelIndex}'
+		$expr: {
+			$eq: [
+				{ $toInt: '$level index' },
+				{ $subtract: [{ $toInt: '${levelNum}' }, 1] }
+			]
+		}
 	}
 };
 const groupStage = { $group: { _id: null } };
@@ -112,7 +117,8 @@ const pipeline = [
 		}
 	},
 	{ $unwind: '$monsters' },
-	{ $replaceRoot: { newRoot: '$monsters' } }
+	{ $replaceRoot: { newRoot: '$monsters' } },
+	{ $match: { kills: { $gt: 0 } } }
 ];
 
 const pipelineString = util.inspect(pipeline, {

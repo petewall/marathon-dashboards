@@ -47,7 +47,12 @@ if (weaponsWithMetrics.length === 0) {
 const matchStage = {
 	$match: {
 		'scenario name': '${gameName}',
-		'level': '${levelNames}'
+		$expr: {
+			$eq: [
+				{ $toInt: '$level index' },
+				{ $subtract: [{ $toInt: '${levelNum}' }, 1] }
+			]
+		}
 	}
 };
 const groupStage = { $group: { _id: null } };
@@ -96,7 +101,8 @@ const pipeline = [
 		}
 	},
 	{ $unwind: '$weapons' },
-	{ $replaceRoot: { newRoot: '$weapons' } }
+	{ $replaceRoot: { newRoot: '$weapons' } },
+	{ $match: { fired: { $gt: 0 } } }
 ];
 
 const pipelineString = util.inspect(pipeline, {
