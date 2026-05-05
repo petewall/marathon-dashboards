@@ -97,10 +97,10 @@ monsters:
     image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/invisible.png
     metricPrefix: invisible looker
   - name: Juggernaut
-    iamge: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/m1/minor-juggernaut.png
+    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/m1/minor-juggernaut.png
     metricPrefix: juggernaut
   - name: Alien Leader
-    iamge: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/m1/alien-leader.png
+    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/m1/alien-leader.png
     metricPrefix: alien leader
   - name: Crew BoB
     image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/m1/bob-green.png
