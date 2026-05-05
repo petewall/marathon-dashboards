@@ -24,7 +24,16 @@ if (!dataFiles.length) {
   process.exit(1);
 }
 
-const gameDocuments = dataFiles.map(loadGameFromFile);
+const gameDocuments = dataFiles.map(filePath => {
+  let parsed;
+  try {
+    parsed = YAML.parse(fs.readFileSync(filePath, 'utf8'));
+  } catch (err) {
+    console.error(`Failed to parse ${filePath}: ${err.message}`);
+    process.exit(1);
+  }
+  return { _id: path.basename(filePath, path.extname(filePath)), ...parsed };
+});
 
 async function uploadGameDetails() {
   const client = new MongoClient(process.env.MONGODB_URL, {
@@ -39,17 +48,12 @@ async function uploadGameDetails() {
     const collection = client.db(dbName).collection(collectionName);
 
     const bulkOps = gameDocuments.map(game => ({
-      updateOne: {
-        filter: { title: game.title },
-        update: { $set: game },
+      replaceOne: {
+        filter: { _id: game._id },
+        replacement: game,
         upsert: true
       }
     }));
-
-    if (!bulkOps.length) {
-      console.log('No game documents generated; nothing to upload.');
-      return;
-    }
 
     const result = await collection.bulkWrite(bulkOps, { ordered: false });
     const upserted = result.upsertedCount || 0;
@@ -104,86 +108,4 @@ function readYamlFilesFromDir(dirPath) {
 
 function isYamlFile(filePath) {
   return /\.ya?ml$/i.test(filePath);
-}
-
-function loadGameFromFile(filePath) {
-  let parsed;
-  try {
-    const raw = fs.readFileSync(filePath, 'utf8');
-    parsed = YAML.parse(raw);
-  } catch (err) {
-    console.error(`Failed to parse ${filePath}: ${err.message}`);
-    process.exit(1);
-  }
-
-  if (!parsed || typeof parsed !== 'object') {
-    console.error(`Unexpected empty or invalid YAML structure in ${filePath}`);
-    process.exit(1);
-  }
-
-  const title =
-    (typeof parsed.name === 'string' && parsed.name.trim()) ||
-    path.basename(filePath, path.extname(filePath));
-  const releaseDate = normalizeReleaseDate(parsed.releaseDate, filePath);
-  const logo = normalizeLogo(parsed.logo, filePath);
-  const levels = normalizeLevels(parsed.levels, filePath);
-
-  return { title, releaseDate, logo, levels };
-}
-
-function normalizeReleaseDate(value, filePath) {
-  if (typeof value === 'number' && Number.isFinite(value)) {
-    return value;
-  }
-  if (typeof value === 'string' && value.trim()) {
-    const maybeNumber = Number(value);
-    if (!Number.isNaN(maybeNumber)) {
-      return maybeNumber;
-    }
-    const parsedDate = new Date(value);
-    if (!Number.isNaN(parsedDate.getTime())) {
-      return parsedDate;
-    }
-  }
-
-  console.error(
-    `Invalid or missing releaseDate in ${filePath}. Expected a year (number) or date string.`
-  );
-  process.exit(1);
-}
-
-function normalizeLogo(value, filePath) {
-  if (typeof value === 'string' && value.trim()) {
-    return value.trim();
-  }
-
-  console.error(`Missing logo URL in ${filePath}.`);
-  process.exit(1);
-}
-
-function normalizeLevels(levelsValue, filePath) {
-  if (!Array.isArray(levelsValue) || levelsValue.length === 0) {
-    console.error(`No levels defined in ${filePath}.`);
-    process.exit(1);
-  }
-
-  return levelsValue.map((level, index) => {
-    const title =
-      level && typeof level.name === 'string' && level.name.trim()
-        ? level.name.trim()
-        : null;
-    const mapUrl =
-      level && typeof level.mapUrl === 'string' && level.mapUrl.trim()
-        ? level.mapUrl.trim()
-        : null;
-
-    if (!title || !mapUrl) {
-      console.error(
-        `Level #${index + 1} in ${filePath} is missing a name or mapUrl.`
-      );
-      process.exit(1);
-    }
-
-    return { title, mapUrl };
-  });
 }

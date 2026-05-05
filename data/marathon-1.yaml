@@ -1,176 +1,200 @@
 ---
-name: Marathon
+title: Marathon
 releaseDate: 1994
 logo: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/M1_Logo.png
 weapons:
   - name: Pistol
     firedMetric: pistol bullets fired
     hitMetric: pistol bullets hit
-    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/weapons/pistol-m1.png
+    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/weapons/m1/pistol.png
   - name: Fusion Pistol
     firedMetric: fusion bolt minors fired
     hitMetric: fusion bolt minors hit
-    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/weapons/fusion-m1.png
+    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/weapons/m1/fusion-pistol.png
   - name: Charged Fusion Pistol
     firedMetric: fusion bolt majors fired
     hitMetric: fusion bolt majors hit
-    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/weapons/fusion-m1.png
+    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/weapons/m1/fusion-pistol.png
   - name: Rifle
     firedMetric: rifle bullets fired
     hitMetric: rifle bullets hit
-    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/weapons/rifle-m1.png
+    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/weapons/m1/assault-rifle.png
   - name: Grenade Launcher
     firedMetric: grenades fired
     hitMetric: grenades hit
-    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/weapons/rifle-m1.png
+    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/weapons/m1/assault-rifle.png
   - name: Flame Thrower
     firedMetric: flamethrower bursts fired
     hitMetric: flamethrower bursts hit
-    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/weapons/flame-m1.png
+    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/weapons/m1/flamethrower.png
   - name: Alien Weapon
     firedMetric: alien weapons fired
     hitMetric: alien weapons hit
-    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/weapons/alien-m1.png
+    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/weapons/m1/alien-weapon.png
   - name: Missiles
     firedMetric: missiles fired
     hitMetric: missiles hit
-    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/weapons/rocket-m1.png
+    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/weapons/m1/rocket-launcher.png
 monsters:
   - name: Fighter
-    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/fighter-minor.png
+    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/m1/minor-fighter.png
     metricPrefix: minor fighter
   - name: Major Fighter
-    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/fighter-major.png
+    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/m1/major-fighter.png
     metricPrefix: major fighter
   - name: Projectile Fighter
-    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/fighter-projectile-minor.png
+    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/m1/minor-projectile-fighter.png
     metricPrefix: minor projectile fighter
   - name: Major Projectile Fighter
-    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/fighter-projectile-major.png
+    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/m1/major-projectile-fighter.png
     metricPrefix: major projectile fighter
   - name: Trooper
-    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/trooper-minor.png
+    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/m1/minor-trooper.png
     metricPrefix: minor trooper
   - name: Major Trooper
-    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/trooper-major.png
+    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/m1/major-trooper.png
     metricPrefix: major trooper
-  - name: Minor Enforcer
-    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/enforcer-m1.png
+  - name: Enforcer
+    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/m1/minor-enforcer.png
     metricPrefix: minor enforcer
+  - name: Major Enforcer
+    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/m1/major-enforcer.png
+    metricPrefix: major enforcer
   - name: Compiler
-    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/spht-minor-m1.png
+    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/m1/minor-compiler.png
     metricPrefix: minor compiler
-  - name: Invisible Compiler
-    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/spht-minor-m1.png
-    metricPrefix: minor invisible compiler
   - name: Major Compiler
-    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/spht-minor-m1.png
+    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/m1/major-compiler.png
     metricPrefix: major compiler
+  - name: Invisible Compiler
+    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/invisible.png
+    metricPrefix: minor invisible compiler
   - name: Major Invisible Compiler
-    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/spht-minor-m1.png
+    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/invisible.png
     metricPrefix: major invisible compiler
   - name: Hunter
-    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/hunter-minor-m2.png
+    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/m1/minor-hunter.png
     metricPrefix: minor hunter
   - name: Major Hunter
-    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/hunter-major-m2.png
+    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/m1/major-hunter.png
     metricPrefix: major hunter
   - name: Hulk
-    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/hulk.png
+    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/m1/minor-hulk.png
     metricPrefix: minor hulk
   - name: Wasp
-    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/wasp-m1.png
+    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/m1/minor-wasp.png
     metricPrefix: minor wasp
   - name: Major Wasp
-    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/wasp-m1.png
+    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/m1/major-wasp.png
     metricPrefix: major wasp
   - name: Looker
-    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/looker-m1.png
+    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/m1/minor-looker.png
     metricPrefix: minor looker
-  - name: Invisible Looker
-    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/looker-m1.png
-    metricPrefix: invisible looker
   - name: Major Looker
-    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/looker-m1.png
+    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/m1/major-looker.png
     metricPrefix: major looker
-  - name: Assimilated Bob
-    image: http://…
+  - name: Invisible Looker
+    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/invisible.png
+    metricPrefix: invisible looker
+  - name: Juggernaut
+    iamge: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/m1/minor-juggernaut.png
+    metricPrefix: juggernaut
+  - name: Alien Leader
+    iamge: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/m1/alien-leader.png
+    metricPrefix: alien leader
+  - name: Crew BoB
+    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/m1/bob-green.png
+    metricPrefix: crew bob
+  - name: Science BoB
+    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/m1/bob-blue.png
     metricPrefix: explodabob
-  - name: madd
-    image: http://…
+  - name: Engineering BoB
+    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/m1/bob-yellow.png
+    metricPrefix: explodabob
+  - name: Security Bob
+    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/m1/bob-red.png
+    metricPrefix: explodabob
+  - name: Assimilated BoB
+    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/m1/bob-green.png
+    metricPrefix: explodabob
+  - name: M.A.D.D.
+    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/m1/madd.png
+    metricPrefix: madd
+  - name: Posessed M.A.D.D.
+    image: https://raw.githubusercontent.com/petewall/marathon-dashboards/refs/heads/main/images/enemies/m1/posessed-madd.png
     metricPrefix: madd
 levels:
-  - name: Arrival
+  - title: Arrival
     mapUrl: https://www.lhowon.org/levels/marathon/standard/0.png
-  - name: Bigger Guns Nearby
+  - title: Bigger Guns Nearby
     mapUrl: https://www.lhowon.org/levels/marathon/standard/1.png
-  - name: Never Burn Money
+  - title: Never Burn Money
     mapUrl: https://www.lhowon.org/levels/marathon/standard/2.png
-  - name: Defend THIS!
+  - title: Defend THIS!
     mapUrl: https://www.lhowon.org/levels/marathon/standard/3.png
-  - name: Couch Fishing
+  - title: Couch Fishing
     mapUrl: https://www.lhowon.org/levels/marathon/standard/4.png
-  - name: The Rose
+  - title: The Rose
     mapUrl: https://www.lhowon.org/levels/marathon/standard/5.png
-  - name: Smells Like Napalm, Tastes Like Chicken!
+  - title: Smells Like Napalm, Tastes Like Chicken!
     mapUrl: https://www.lhowon.org/levels/marathon/standard/6.png
-  - name: Cool Fusion
+  - title: Cool Fusion
     mapUrl: https://www.lhowon.org/levels/marathon/standard/7.png
-  - name: G4 Sunbathing
+  - title: G4 Sunbathing
     mapUrl: https://www.lhowon.org/levels/marathon/standard/8.png
-  - name: Blaspheme Quarantine
+  - title: Blaspheme Quarantine
     mapUrl: https://www.lhowon.org/levels/marathon/standard/9.png
-  - name: Bob-B-Q
+  - title: Bob-B-Q
     mapUrl: https://www.lhowon.org/levels/marathon/standard/10.png
-  - name: Shake Before Using…
+  - title: Shake Before Using…
     mapUrl: https://www.lhowon.org/levels/marathon/standard/11.png
-  - name: Fire! Fire! Fire! Fire! Fire!
+  - title: Fire! Fire! Fire! Fire! Fire!
     mapUrl: https://www.lhowon.org/levels/marathon/standard/12.png
-  - name: Colony Ship For Sale, Cheap
+  - title: Colony Ship For Sale, Cheap
     mapUrl: https://www.lhowon.org/levels/marathon/standard/13.png
-  - name: Habe Quiddam
+  - title: Habe Quiddam
     mapUrl: https://www.lhowon.org/levels/marathon/standard/14.png
-  - name: Neither High nor Low
+  - title: Neither High nor Low
     mapUrl: https://www.lhowon.org/levels/marathon/standard/15.png
-  - name: Pfhor Your Eyes Only…
+  - title: Pfhor Your Eyes Only…
     mapUrl: https://www.lhowon.org/levels/marathon/standard/16.png
-  - name: No Artificial Colors
+  - title: No Artificial Colors
     mapUrl: https://www.lhowon.org/levels/marathon/standard/17.png
-  - name: Unpfhorgiven
+  - title: Unpfhorgiven
     mapUrl: https://www.lhowon.org/levels/marathon/standard/18.png
-  - name: Two Times Two Equals…
+  - title: Two Times Two Equals…
     mapUrl: https://www.lhowon.org/levels/marathon/standard/19.png
-  - name: Beware of Low-Flying Defense Drones…
+  - title: Beware of Low-Flying Defense Drones…
     mapUrl: https://www.lhowon.org/levels/marathon/standard/20.png
-  - name: Eupfhoria
+  - title: Eupfhoria
     mapUrl: https://www.lhowon.org/levels/marathon/standard/21.png
-  - name: Pfhoraphobia
+  - title: Pfhoraphobia
     mapUrl: https://www.lhowon.org/levels/marathon/standard/22.png
-  - name: Ain't Got Time Pfhor This…
+  - title: Ain't Got Time Pfhor This…
     mapUrl: https://www.lhowon.org/levels/marathon/standard/23.png
-  - name: Welcome to the Revolution…
+  - title: Welcome to the Revolution…
     mapUrl: https://www.lhowon.org/levels/marathon/standard/24.png
-  - name: Try again
+  - title: Try again
     mapUrl: https://www.lhowon.org/levels/marathon/standard/25.png
-  - name: Ingue Ferroque
+  - title: Ingue Ferroque
     mapUrl: https://www.lhowon.org/levels/marathon/standard/26.png
-  - name: Mars Needs Women
+  - title: Mars Needs Women
     mapUrl: https://www.lhowon.org/levels/marathon/standard/27.png
-  - name: Carnage Palace Deeee-Luxe
+  - title: Carnage Palace Deeee-Luxe
     mapUrl: https://www.lhowon.org/levels/marathon/standard/28.png
-  - name: 5-D space
+  - title: 5-D space
     mapUrl: https://www.lhowon.org/levels/marathon/standard/29.png
-  - name: Arena
+  - title: Arena
     mapUrl: https://www.lhowon.org/levels/marathon/standard/30.png
-  - name: E equals MC WHAT!!
+  - title: E equals MC WHAT!!
     mapUrl: https://www.lhowon.org/levels/marathon/standard/31.png
-  - name: Showered With Grenades
+  - title: Showered With Grenades
     mapUrl: https://www.lhowon.org/levels/marathon/standard/32.png
-  - name: Spiral Insanity
+  - title: Spiral Insanity
     mapUrl: https://www.lhowon.org/levels/marathon/standard/33.png
-  - name: Waldo World Arena
+  - title: Waldo World Arena
     mapUrl: https://www.lhowon.org/levels/marathon/standard/34.png
-  - name: What Goes Up, Must Come Down
+  - title: What Goes Up, Must Come Down
     mapUrl: https://www.lhowon.org/levels/marathon/standard/35.png
-  - name: You don't need to see my I.D.
+  - title: You don't need to see my I.D.
     mapUrl: https://www.lhowon.org/levels/marathon/standard/36.png
